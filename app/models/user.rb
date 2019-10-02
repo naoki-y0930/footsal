@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,:authentication_keys => [:tell]
 
+  attachment :image
+
    # usernameを必須・一意とする
    validates_uniqueness_of :name, :team_name, :captain_name, :tell
    validates_presence_of :name, :team_name, :captain_name, :tell

@@ -3,7 +3,7 @@
 名前<%= @user.name %>
 キャプテン<%= @user.captain_name %>
 チーム名<%= @user.team_name %>
-
+<%= attachment_image_tag @user, :image, :fill, 200, 200, fallback: "no_image.png" %>
 
 <%= link_to '編集する', edit_user_path %>
 <%= link_to 'pass変更', edit_user_registration_path %>
