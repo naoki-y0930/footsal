@@ -2,12 +2,7 @@ Rails.application.routes.draw do
   root 'home#home'
   get 'home' => 'home#home'
 
-  resources :users, except: [:create] do
-    collection do
-      get 'search'
-    end
 
-  end
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
   passwords:     'admins/passwords',
@@ -19,5 +14,10 @@ devise_for :users, controllers: {
   registrations: 'users/registrations'
 }
 
+resources :users, except: [:create] do
+  collection do
+    get 'search'
+  end
+end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
