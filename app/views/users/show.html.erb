@@ -1,9 +1,19 @@
-<h1>ユーザー情報詳細</h1>
+  <h1>ユーザー情報詳細</h1>
+   名前<%= @user.name %>
+   キャプテン<%= @user.captain_name %>
+   チーム名<%= @user.team_name %>
+    <%= attachment_image_tag @user, :image, :fill, 200, 200, fallback: "no_image.png" %>
+    <% if @user.team_detail.present? %>
+    <%= @team.male %>人
+    <%= @team.female %>人
+    <%= @team.experience %>人
+    <%= @team.beginner %>人
+    <%= @team.introduction %>
+    <%= @team.team_level %>
+    <%= @team.active_area %>
+    <%= @team.active_time %>
+    <% end %>
 
-名前<%= @user.name %>
-キャプテン<%= @user.captain_name %>
-チーム名<%= @user.team_name %>
-<%= attachment_image_tag @user, :image, :fill, 200, 200, fallback: "no_image.png" %>
 
-<%= link_to '編集する', edit_user_path %>
-<%= link_to 'pass変更', edit_user_registration_path %>
+     <%= link_to '編集する', edit_user_path %>
+     <%= link_to 'pass変更', edit_user_registration_path %>
