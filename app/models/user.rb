@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,:authentication_keys => [:tell]
 
   attachment :image
+  has_one :team_detail
 
    # usernameを必須・一意とする
    validates_uniqueness_of :name, :team_name, :captain_name, :tell

@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  experience: 1
+  beginner: 1
+  male: 1
+  female: 1
+  introduction: MyText
+  team_level: MyString
+  active_area: MyString
+  active_time: MyString
+  user_id: 1
+
+two:
+  experience: 1
+  beginner: 1
+  male: 1
+  female: 1
+  introduction: MyText
+  team_level: MyString
+  active_area: MyString
+  active_time: MyString
+  user_id: 1
