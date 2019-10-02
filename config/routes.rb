@@ -2,6 +2,12 @@ Rails.application.routes.draw do
   root 'home#home'
   get 'home' => 'home#home'
 
+  resources :users, except: [:create] do
+    collection do
+      get 'search'
+    end
+
+  end
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
   passwords:     'admins/passwords',

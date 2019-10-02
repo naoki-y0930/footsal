@@ -1,0 +1,17 @@
+<h1>チーム一覧</h1>
+
+<% @users.each do |user| %>
+<table class="table">
+  <tr>
+    <th>名前</th>
+    <th>キャプテン</th>
+    <th>チーム名</th>
+  </tr>
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= user.captain_name %></td>
+    <td><%= user.team_name %></td>
+  </tr>
+</table>
+
+<% end %>
