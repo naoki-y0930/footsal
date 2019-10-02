@@ -6,11 +6,13 @@
     <th>名前</th>
     <th>キャプテン</th>
     <th>チーム名</th>
+    <th>詳細</th>
   </tr>
   <tr>
     <td><%= user.name %></td>
     <td><%= user.captain_name %></td>
     <td><%= user.team_name %></td>
+    <td><%= link_to '詳細へ', user_path(user) %></td>
   </tr>
 </table>
 
