@@ -1,6 +1,12 @@
 <h1>掲示板投稿一覧</h1>
 
 <% @posts.each do |post| %>
+<h4>タイトル</h4>
 <%= post.title %>
+<br>
+<h4>本文</h4>
 <%= post.body %>
+<h4>代表者</h4>
+<%= post.user.captain_name %>
+<%= link_to '詳細', post_path(post) %>
 <% end %>

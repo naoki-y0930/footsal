@@ -1,6 +1,13 @@
 <h1>投稿詳細</h1>
 
+<%= attachment_image_tag @post.user, :image, :fill, 250, 250, fallback: "no_image.png"  %>
+<h4>チーム名</h4>
+<%= @post.user.team_name %>
+<h4>キャプテン</h4>
+<%= @post.user.captain_name %>
 <h4>タイトル</h4>
 <%= @post.title %>
 <h4>本文</h4>
 <%= @post.body %>
+
+<%= link_to '戻る', posts_path %>
