@@ -1,8 +1,12 @@
 
 <h1>春木翔</h1>
-
+     <!-- サインアップ、サインイン時 -->
      <% if flash[:entry] %>
        <p><%= flash[:entry] %></p>
+      <% end %>
+
+      <% if flash[:contactsuccess] %>
+      <p><%= flash[:contactsuccess] %></p>
       <% end %>
 
 
@@ -10,3 +14,4 @@
 
 <%= link_to '募集する', new_post_path %>
 <%= link_to '掲示板をみる', posts_path %>
+<%= link_to 'お問い合わせ', contacts_new_path %>
