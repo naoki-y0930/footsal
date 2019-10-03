@@ -1,0 +1,21 @@
+  <h1>チーム情報登録</h1>
+
+  <%= form_for @team,:url => {:action => :create}  do |team| %>
+  <h4>経験者人数</h4>
+  <%= team.number_field :experience %>
+  <h4>初心者人数</h4>
+  <%= team.number_field :beginner %>
+  <h4>男性</h4>
+  <%= team.number_field :male %>
+  <h4>女性</h4>
+  <%= team.number_field :female %>
+  <h4>チーム紹介文</h4>
+  <%= team.text_area :introduction, rows: "3", placeholder: "introduction" %>
+  <h4>チームレベル</h4>
+  <%= team.select :team_level, [["初級", "初級"], ["中級", "中級"],  ["上級", "上級"] ], :prompt => "選択してください" %>
+  <h4>活動地域</h4>
+  <%= team.select :active_area, [["大阪", "大阪"], ["和歌山", "和歌山"],  ["奈良", "奈良"],  ["兵庫", "兵庫"],  ["京都", "京都"],  ["滋賀", "滋賀"] ], :prompt => "選択してください" %>
+  <h4>活動時間</h4>
+  <%= team.select :active_time, [["朝", "朝"], ["昼", "昼"],  ["夕", "夕"],  ["夜", "夜"] ], :prompt => "選択してください" %>
+  <%= team.submit '登録する' %>
+  <% end %>

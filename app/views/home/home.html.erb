@@ -1,6 +1,10 @@
 
 <h1>春木翔</h1>
 
+     <% if flash[:entry] %>
+       <p><%= flash[:entry] %></p>
+      <% end %>
+
 
 <%= link_to 'user一覧', users_path %>
 

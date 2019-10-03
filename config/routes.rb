@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'teamdetails/new'
+  post 'teamdetails' => 'teamdetails#create'
   get '/posts' => 'posts#index'
   get '/posts/new' => 'posts#new'
   post '/posts' => 'posts#create'
