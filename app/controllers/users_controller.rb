@@ -11,8 +11,8 @@ class UsersController < ApplicationController
 
   def edit
      @user = User.find(params[:id])
-     # edit画面に入ると消える
-     @user.build_team_detail
+     # edit画面に入ると消える.でもこれがないと入力できない
+     # @user.build_team_detail
       if @user == current_user
      else
       redirect_to users_path

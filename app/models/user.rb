@@ -7,7 +7,7 @@ class User < ApplicationRecord
   attachment :image
   has_one :team_detail, dependent: :destroy
   accepts_nested_attributes_for :team_detail ,allow_destroy: true
-
+  has_many :posts, dependent: :destroy
    # usernameを必須・一意とする
    validates_uniqueness_of :name, :team_name, :captain_name, :tell
    validates_presence_of :name, :team_name, :captain_name, :tell
