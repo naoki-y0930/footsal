@@ -1,0 +1,26 @@
+<h1>検索結果</h1>
+
+<% @search.each do |search| %>
+
+<h4>チーム名</h4>
+<%= search.user.team_name %>
+<h4>キャプテン</h4>
+<%= search.user.captain_name %>
+<h4>チームレベル</h4>
+<%= search.team_level %>
+<h4>活動地域</h4>
+<%= search.active_area %>
+<h4>活動時間</h4>
+<%= search.active_time %>
+<h4>経験者</h4>
+<%= search.experience %>人
+<h4>初心者</h4>
+<%= search.beginner %>人
+<h4>男性</h4>
+<%= search.male %>人
+<h4>女性</h4>
+<%= search.female %>人
+<%= link_to 'チーム詳細', user_path(search.user) %>
+<% end %>
+<br>
+<%= link_to '検索に戻る', users_path %>

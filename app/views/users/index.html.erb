@@ -1,5 +1,22 @@
 <h1>チーム一覧</h1>
 
+<%= form_tag(search_users_path, :method => 'get') do %>
+
+<%= select_tag(:team_level, options_for_select([["初級", "初級" ], ["中級", "中級" ], ["上級", "上級" ]]), :include_blank => "選択してください") %>
+<%= select_tag(:active_area, options_for_select([["大阪", "大阪" ], ["和歌山", "和歌山" ], ["奈良", "奈良" ], ["兵庫", "兵庫" ], ["京都", "京都" ], ["滋賀", "滋賀" ]]), :include_blank => "選択してください") %>
+<%= select_tag(:active_time, options_for_select([["朝", "朝" ], ["昼", "昼" ], ["夕", "夕" ], ["夜", "夜" ]]), :include_blank => "選択してください") %>
+<h4>男性人数</h4>
+<%= select_tag(:male, options_for_select((0..50).to_a ), :include_blank => "選択してください") %>
+<h4>女性人数</h4>
+<%= select_tag(:female, options_for_select((0..50).to_a ), :include_blank => "選択してください") %>
+<h4>経験者</h4>
+<%= select_tag(:experience, options_for_select((0..50).to_a ), :include_blank => "選択してください") %>
+<h4>初心者</h4>
+<%= select_tag(:beginner, options_for_select((0..50).to_a ), :include_blank => "選択してください") %>
+
+<%= submit_tag 'search' %>
+<% end %>
+
 <% @users.each do |user| %>
 <table class="table">
   <tr>

@@ -4,10 +4,11 @@
    チーム名<%= @user.team_name %>
     <%= attachment_image_tag @user, :image, :fill, 200, 200, fallback: "no_image.png" %>
     <% if @user.team_detail.present? %>
-    <%= @team.male %>人
-    <%= @team.female %>人
-    <%= @team.experience %>人
-    <%= @team.beginner %>人
+    <br>
+    男性<%= @team.male %>人
+    女性<%= @team.female %>人
+    経験者<%= @team.experience %>人
+    初心者<%= @team.beginner %>人
     <%= @team.introduction %>
     <%= @team.team_level %>
     <%= @team.active_area %>

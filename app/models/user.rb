@@ -24,4 +24,11 @@ class User < ApplicationRecord
  def will_save_change_to_email?
    false
  end
+
+ #検索機能
+ def self.search(search)
+   return User.all unless search
+   User.where(['content LIKE ?', "%#{search}%"])
+ end
+
 end

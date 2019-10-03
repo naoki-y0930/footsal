@@ -1,5 +1,34 @@
 class UsersController < ApplicationController
 
+  def search
+    @search = TeamDetail.all
+    if params[:team_level] != ""
+      @search = @search.where(team_level: params[:team_level])
+    end
+    if params[:active_area] != ""
+      @search = @search.where(active_area: params[:active_area])
+    end
+    if params[:active_time] != ""
+      @search = @search.where(active_time: params[:active_time])
+    end
+    if params[:male] != ""
+      @search = @search.where(male: params[:male])
+    end
+    if params[:female] != ""
+      @search = @search.where(female: params[:female])
+    end
+    if params[:experience] != ""
+      @search = @search.where(experience: params[:experience])
+    end
+    if params[:beginner] != ""
+      @search = @search.where(beginner: params[:beginner])
+    end
+    # binding.pry
+     # @search = TeamDetail.search(params[:team_level])
+     # @search = TeamDetail.search(params[:active_area])
+     # @search = TeamDetail.search(params[:active_time])
+  end
+
   def index
      @users = User.all.reverse_order
   end
@@ -11,8 +40,6 @@ class UsersController < ApplicationController
 
   def edit
      @user = User.find(params[:id])
-     # edit画面に入ると消える.でもこれがないと入力できない
-     # @user.build_team_detail
       if @user == current_user
      else
       redirect_to users_path

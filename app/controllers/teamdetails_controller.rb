@@ -1,5 +1,7 @@
 class TeamdetailsController < ApplicationController
 
+
+
   def new
     @team = TeamDetail.new
   end
