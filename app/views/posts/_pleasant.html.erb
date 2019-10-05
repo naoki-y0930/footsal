@@ -1,0 +1,13 @@
+<% @pleasant.each do |p| %>
+ <h4>条件</h4>
+  <%= p.conditions %>
+   <h4>タイトル</h4>
+    <%= p.title %>
+   <br>
+    <h4>本文</h4>
+     <%= p.body %>
+    <h4>代表者</h4>
+     <%= p.user.captain_name %>
+      <%= link_to '詳細', post_path(p) %>
+       <p style="font-size: 20px; color: tomato;">ここまで１投稿</p>
+      <% end %>

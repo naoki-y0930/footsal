@@ -1,0 +1,13 @@
+<% @now.each do |n| %>
+ <h4>条件</h4>
+  <%= n.conditions %>
+   <h4>タイトル</h4>
+    <%= n.title %>
+   <br>
+    <h4>本文</h4>
+     <%= n.body %>
+    <h4>代表者</h4>
+     <%= n.user.captain_name %>
+      <%= link_to '詳細', post_path(n) %>
+       <p style="font-size: 20px; color: tomato;">ここまで１投稿</p>
+      <% end %>

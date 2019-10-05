@@ -1,0 +1,13 @@
+<% @serious.each do |s| %>
+ <h4>条件</h4>
+  <%= s.conditions %>
+   <h4>タイトル</h4>
+    <%= s.title %>
+   <br>
+    <h4>本文</h4>
+     <%= s.body %>
+    <h4>代表者</h4>
+     <%= s.user.captain_name %>
+      <%= link_to '詳細', post_path(s) %>
+       <p style="font-size: 20px; color: tomato;">ここまで１投稿</p>
+      <% end %>

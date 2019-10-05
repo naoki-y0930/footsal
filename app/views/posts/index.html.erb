@@ -1,12 +1,37 @@
-<h1>掲示板投稿一覧</h1>
-
-<% @posts.each do |post| %>
-<h4>タイトル</h4>
-<%= post.title %>
-<br>
-<h4>本文</h4>
-<%= post.body %>
-<h4>代表者</h4>
-<%= post.user.captain_name %>
-<%= link_to '詳細', post_path(post) %>
-<% end %>
+  <h1>掲示板投稿一覧</h1>
+   <h4>検索</h4>
+    <div class="plan"><p style="color: limegreen;">予定を合わせて対戦</p></div>
+    <div class="now"><p style="color: tomato;">いますぐ試合したい</p></div>
+    <div class="pleasant"><p style="color: orange;">わいわい試合したい</p></div>
+    <div class="serious"><p style="color: pink;">真剣勝負!</p></div>
+   <%= link_to '投稿一覧に戻る', posts_path %>
+    <div class="change-post">
+    <% @posts.each do |post| %>
+     <h4>条件</h4>
+      <%= post.conditions %>
+       <h4>タイトル</h4>
+        <%= post.title %>
+       <br>
+        <h4>本文</h4>
+         <%= post.body %>
+        <h4>代表者</h4>
+         <%= post.user.captain_name %>
+          <%= link_to '詳細', post_path(post) %>
+           <p style="font-size: 20px; color: tomato;">ここまで１投稿</p>
+          <% end %>
+         </div>
+        <!-- クリックで条件検索 -->
+         <script>
+          $(".plan").on('click', function() {
+           $('.change-post').html('<%= j(render partial: "posts/plan", locals: {plan: @plan}) %>');
+            });
+           $(".now").on('click', function() {
+            $('.change-post').html('<%= j(render partial: "posts/now", locals: {now: @now}) %>');
+             });
+            $(".pleasant").on('click', function() {
+             $('.change-post').html('<%= j(render partial: "posts/pleasant", locals: {pleasant: @pleasant}) %>');
+              });
+             $(".serious").on('click', function() {
+              $('.change-post').html('<%= j(render partial: "posts/serious", locals: {serious: @serious}) %>');
+               });
+             </script>
