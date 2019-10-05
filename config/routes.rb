@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :posts
   root 'home#home'
   get 'home' => 'home#home'
+  get 'terms' => 'home#terms'
 
 
   devise_for :admins, controllers: {

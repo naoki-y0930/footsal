@@ -14,7 +14,7 @@
 <h4>初心者</h4>
 <%= select_tag(:beginner, options_for_select((0..50).to_a ), :include_blank => "選択してください") %>
 
-<%= submit_tag 'search' %>
+<%= submit_tag '検索' %>
 <% end %>
 
 <% @users.each do |user| %>

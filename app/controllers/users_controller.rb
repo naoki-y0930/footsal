@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 
   def search
+    # 検索する値が「""」と等しい場合はfalseで処理は実行されない（検索を選択していないとblankが返ってくる）
+    # 値が「""」以外であればtrueとなる（処理実行）。
     @search = TeamDetail.all
     if params[:team_level] != ""
       @search = @search.where(team_level: params[:team_level])
@@ -23,10 +25,6 @@ class UsersController < ApplicationController
     if params[:beginner] != ""
       @search = @search.where(beginner: params[:beginner])
     end
-    # binding.pry
-     # @search = TeamDetail.search(params[:team_level])
-     # @search = TeamDetail.search(params[:active_area])
-     # @search = TeamDetail.search(params[:active_time])
   end
 
   def index
