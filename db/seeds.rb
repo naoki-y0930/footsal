@@ -42,3 +42,19 @@ user = User.create!(
       active_time: '昼',
   }
 )
+user = User.create!(
+  name: "本田いけすけ",
+  captain_name: "けいすけ",
+  team_name: "サムライジャポン",
+  tell: "08044445555",
+  password: "honda123",
+  team_detail_attributes: {
+      experience: 20,
+      beginner: 5,
+      male: 20,
+      female: 5,
+      team_level: '上級',
+      active_area: '和歌山',
+      active_time: '朝',
+  }
+)
