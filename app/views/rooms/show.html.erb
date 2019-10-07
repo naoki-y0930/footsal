@@ -1,0 +1,24 @@
+  <h1>DM</h1>
+   <h4>お話し相手</h4>
+    <% @entries.each do |e| %>
+     <strong>
+      <a href="/users/<%= e.user.id %>">
+       <%= e.user.name %></a>
+      </strong>
+     <% end %>
+      <% if @message.present? %>
+       <% @messages.each do |m| %>
+        <strong>
+         <br><%= m.content %>
+        </strong>
+         <%= m.created_at.strftime("%Y-%m-%d %H:%M") %>
+         <%= m.user.captain_name %>
+        <% end %>
+       <% else %>
+        <h3><p>メッセージはまだありません</p></h3>
+       <% end %>
+        <%= form_for @message, :url => { :controller => :messages, :action => :create } do |f| %>
+         <%= f.text_field :content, placeholder: 'メッセージを入力してください', size: 70, row: 3 %>
+         <%= f.hidden_field :room_id, value: @room.id %>
+         <%= f.submit '投稿する' %>
+        <% end %>

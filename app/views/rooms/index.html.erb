@@ -1,0 +1,6 @@
+  <h1>トークルーム一覧</h1>
+   <% @anotherEntries.each do |ae| %>
+    <%= link_to room_path(ae.room.id) do %>
+     <%= ae.user.name %>とのトーク
+    <% end %>
+   <% end %>

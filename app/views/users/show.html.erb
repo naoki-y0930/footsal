@@ -1,20 +1,31 @@
   <h1>ユーザー情報詳細</h1>
-   名前<%= @user.name %>
-   キャプテン<%= @user.captain_name %>
-   チーム名<%= @user.team_name %>
+   <% if @user.id == current_user.id %>
+    名前<%= @user.name %>
+    キャプテン<%= @user.captain_name %>
+    チーム名<%= @user.team_name %>
     <%= attachment_image_tag @user, :image, :fill, 200, 200, fallback: "no_image.png" %>
-    <% if @user.team_detail.present? %>
-    <br>
-    男性<%= @team.male %>人
-    女性<%= @team.female %>人
-    経験者<%= @team.experience %>人
-    初心者<%= @team.beginner %>人
-    <%= @team.introduction %>
-    <%= @team.team_level %>
-    <%= @team.active_area %>
-    <%= @team.active_time %>
-    <% end %>
-
-
-     <%= link_to '編集する', edit_user_path %>
-     <%= link_to 'pass変更', edit_user_registration_path %>
+     <% if @user.team_detail.present? %>
+      <br>
+       男性<%= @team.male %>人
+       女性<%= @team.female %>人
+       経験者<%= @team.experience %>人
+       初心者<%= @team.beginner %>人
+            <%= @team.introduction %>
+            <%= @team.team_level %>
+            <%= @team.active_area %>
+            <%= @team.active_time %>
+           <% end %>
+            <%= link_to '編集する', edit_user_path %>
+            <%= link_to 'pass変更', edit_user_registration_path %>
+           <% else %>
+            <% if @isRoom == true %>
+             <p><a href="/rooms/<%= @roomId %>">チャットへ</a></p>
+            <% else %>
+             <%= form_for(@room) do |f| %>
+              <%= fields_for @entry do |e| %>
+               <% e.hidden_field :user_id, value: @user.id %>
+              <% end %>
+            <%= f.submit "お話しする" %>
+           <% end %>
+          <% end %>
+         <% end %>

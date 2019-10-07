@@ -23,10 +23,14 @@ devise_for :users, controllers: {
   passwords:     'users/passwords',
   registrations: 'users/registrations'
 }
-
+resources :messages, only: [:create]
+resources :rooms, only: [:create, :show, :index]
 resources :users, except: [:create] do
   collection do
     get 'search'
+  end
+  member do
+    get '/talks' => 'users#talks'
   end
 end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
