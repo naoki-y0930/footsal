@@ -17,7 +17,6 @@
            <% end %>
             <%= link_to '編集する', edit_user_path %>
             <%= link_to 'pass変更', edit_user_registration_path %>
-           <% else %>
             <% if @isRoom == true %>
              <p><a href="/rooms/<%= @roomId %>">チャットへ</a></p>
             <% else %>

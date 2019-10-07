@@ -1,6 +1,20 @@
-  <h1>トークルーム一覧</h1>
-   <% @anotherEntries.each do |ae| %>
-    <%= link_to room_path(ae.room.id) do %>
-     <%= ae.user.name %>とのトーク
-    <% end %>
-   <% end %>
+  <div class="center">
+    <h1 class="margin1">トーク一覧</h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2 col-lg-8 col-lg-offset-2 center">
+        <% @anotherEntries.each do |ae| %>
+         <div class="block margin1">
+         <%= link_to room_path(ae.room.id) do %>
+         <div class="imageblock">
+           <%= attachment_image_tag ae.user, :image, :fill, 63, 63, fallback: "no_image2.png", class: 'radius margin2' %>
+         </div>
+          <p class="margin2"><%= ae.user.name %></p>
+        </div>
+         <% end %>
+        <% end %>
+      </div>
+      <div class="col-sm-2 col-lg-2"></div>
+    </div>
+  </div>

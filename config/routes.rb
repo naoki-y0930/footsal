@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   get 'home' => 'home#home'
   get 'terms' => 'home#terms'
 
+  get 'admins' => 'admins#index'
+  get 'admins/users/:id/person' => 'admins#person', as: 'person'
+  get 'admins/people' => 'admins#people'
 
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',

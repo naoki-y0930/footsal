@@ -14,3 +14,37 @@
  */
  // Custom bootstrap variables must be set or imported *before* bootstrap.
  @import "bootstrap";
+
+ * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+ }
+
+// variousscreen
+ .center{
+   text-align: center;
+ }
+ .radius{
+   border-radius: 50px;
+ }
+ .margin1{
+   margin:20px auto;
+ }
+ .margin2{
+   margin:10px auto;
+ }
+// variousscreen
+
+
+// roomindexここから
+.block{
+  border: 1px solid #76767676;
+}
+// roomindexここまで
+
+// roomindexここから
+.talk-light{
+  text-align: right;
+}
+// roomindexここまで

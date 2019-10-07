@@ -1,0 +1,19 @@
+<h1>ユーザー詳細</h1>
+
+名前<%= @user.name %>
+キャプテン<%= @user.captain_name %>
+チーム名<%= @user.team_name %>
+<%= attachment_image_tag @user, :image, :fill, 200, 200, fallback: "no_image.png" %>
+ <% if @user.team_detail.present? %>
+  <br>
+   男性<%= @team.male %>人
+   女性<%= @team.female %>人
+   経験者<%= @team.experience %>人
+   初心者<%= @team.beginner %>人
+        <%= @team.introduction %>
+        <%= @team.team_level %>
+        <%= @team.active_area %>
+        <%= @team.active_time %>
+       <% end %>
+
+<%= link_to 'ユーザー一覧へ戻る', admins_people_path %>
