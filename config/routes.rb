@@ -16,9 +16,11 @@ Rails.application.routes.draw do
 
   get 'admins' => 'admins#index'
   get 'admins/seek' => 'admins#seek'
-  get 'admins/users/:id/person' => 'admins#person', as: 'person'
   get 'admins/people' => 'admins#people'
-
+  get 'admins/users/:id/person' => 'admins#person', as: 'person'
+  get 'admins/users/:id/person_edit' => 'admins#person_edit', as: 'person_edit'
+  patch 'admins/users/:id' => 'admins#update'
+  put 'admins/users/:id' => 'admins#update'
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
   passwords:     'admins/passwords',

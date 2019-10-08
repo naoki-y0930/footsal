@@ -18,7 +18,6 @@ class User < ApplicationRecord
    # paranoia
    acts_as_paranoid
 
-   # validates :tell, telephone_number: {country: :ja, types: [:fixed_line, :mobile]}
    # 半角数字0~9を10回繰り返しor11回繰り返しで一致
    VALID_PHONE_REGEX = /\A\d{10}$|^\d{11}\z/
    validates :tell, presence: true, format: { with: VALID_PHONE_REGEX }

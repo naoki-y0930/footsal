@@ -14,5 +14,6 @@
           <%= @team.active_area %>
           <%= @team.active_time %>
          <% end %>
+        <%= link_to "編集", person_edit_path %>
         <%= link_to "強制退会", user_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-danger", class: "btn btn-danger btn-xs" %>
        <%= link_to 'ユーザー一覧へ戻る', admins_people_path %>
