@@ -1,11 +1,11 @@
 class PostsController < ApplicationController
 
   def index
-     @posts = Post.all.reverse_order
-     @plan = Post.where(conditions: "予定を合わせて対戦")
-     @now = Post.where(conditions: "いますぐ試合したい")
-     @pleasant = Post.where(conditions: "わいわい試合したい")
-     @serious = Post.where(conditions: "真剣勝負!")
+     @posts = Post.page(params[:page]).per(5).reverse_order
+     @plan = Post.where(conditions: "予定を合わせて対戦").page(params[:page]).per(2).reverse_order
+     @now = Post.where(conditions: "いますぐ試合したい").page(params[:page]).per(2).reverse_order
+     @pleasant = Post.where(conditions: "わいわい試合したい").page(params[:page]).per(2).reverse_order
+     @serious = Post.where(conditions: "真剣勝負!").page(params[:page]).per(2).reverse_order
   end
 
   def new
@@ -24,6 +24,24 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @user = @post.user
+    @currentUserEntry = Entry.where(user_id: current_user.id)
+    @userEntry = Entry.where(user_id: @user.id)
+     unless @user.id == current_user.id
+      @currentUserEntry.each do |cu|
+        @userEntry.each do |u|
+          if cu.room_id == u.room_id then
+            @isRoom = true
+            @roomId = cu.room_id
+          end
+        end
+       end
+       if @isRoom
+       else
+         @room = Room.new
+         @entry = Entry.new
+       end
+     end
   end
 
 

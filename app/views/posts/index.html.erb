@@ -20,6 +20,7 @@
           <%= link_to '詳細', post_path(post) %>
            <p style="font-size: 20px; color: tomato;">ここまで１投稿</p>
           <% end %>
+          <%= paginate(@posts) %>
          </div>
         <!-- クリックで条件検索 -->
          <script>

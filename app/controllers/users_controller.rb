@@ -33,12 +33,11 @@ class UsersController < ApplicationController
   end
 
   def index
-     @users = User.all.reverse_order
+     @users = User.page(params[:page]).per(5).reverse_order
 
   end
 
   def show
-    if user_signed_in?
      @user = User.find(params[:id])
      @team = TeamDetail.find_by(user_id: @user.id)
      @currentUserEntry = Entry.where(user_id: current_user.id)
@@ -58,11 +57,7 @@ class UsersController < ApplicationController
           @entry = Entry.new
         end
       end
-
-    else
-      @user = User.find(params[:id])
-    end
-  end
+   end
 
   def edit
      @user = User.find(params[:id])
