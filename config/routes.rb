@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'home' => 'home#home'
   get 'home/terms' => 'home#terms'
   get 'home/privacy' => 'home#privacy'
+  get 'home/caution' => 'home#caution'
 
   get 'admins' => 'admins#index'
   get 'admins/seek' => 'admins#seek'
