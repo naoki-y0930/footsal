@@ -1,5 +1,8 @@
+
+
   <h1>掲示板投稿画面</h1>
    <%= form_for(@post) do |f| %>
+   <%= render 'layouts/error_messages', model: f.object %>
   <h4>タイトル</h4>
    <%= f.text_field :title %>
   <h4>本文</h4>

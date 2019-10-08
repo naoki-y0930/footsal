@@ -19,6 +19,23 @@
             <%= link_to 'pass変更', edit_user_registration_path %>
             <%= link_to "退会", user_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "nav-link", class: "btn btn-danger" %>
             <% else %>
+
+            名前<%= @user.name %>
+            キャプテン<%= @user.captain_name %>
+            チーム名<%= @user.team_name %>
+            <%= attachment_image_tag @user, :image, :fill, 200, 200, fallback: "no_image.png" %>
+            <% if @user.team_detail.present? %>
+             <br>
+              男性<%= @team.male %>人
+              女性<%= @team.female %>人
+              経験者<%= @team.experience %>人
+              初心者<%= @team.beginner %>人
+                   <%= @team.introduction %>
+                   <%= @team.team_level %>
+                   <%= @team.active_area %>
+                   <%= @team.active_time %>
+                  <% end %>
+
             <% if @isRoom == true %>
              <p><a href="/rooms/<%= @roomId %>">チャットへ</a></p>
              <% else %>
