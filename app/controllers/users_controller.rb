@@ -28,29 +28,13 @@ class UsersController < ApplicationController
     end
   end
 
-  def talks
-     @user = User.find(params[:id])
-     @currentUserEntry = Entry.where(user_id: current_user.id)
-     @userEntry = Entry.where(user_id: @user.id)
-     unless @user.id == current_user.id
-       @currentUserEntry.each do |cu|
-         @userEntry.each do |u|
-           if cu.room_id == u.room_id then
-             @isRoom = true
-             @roomId = cu.room_id
-           end
-         end
-        end
-        if @isRoom
-        else
-          @room = Room.new
-          @entry = Entry.new
-        end
-      end
-    end
+  def seek
+    @seek = User.find(params[:seek])
+  end
 
   def index
      @users = User.all.reverse_order
+
   end
 
   def show
@@ -58,7 +42,7 @@ class UsersController < ApplicationController
      @team = TeamDetail.find_by(user_id: @user.id)
      @currentUserEntry = Entry.where(user_id: current_user.id)
      @userEntry = Entry.where(user_id: @user.id)
-     unless @user.id == current_user.id
+      unless @user.id == current_user.id
        @currentUserEntry.each do |cu|
          @userEntry.each do |u|
            if cu.room_id == u.room_id then
@@ -96,6 +80,7 @@ class UsersController < ApplicationController
   def destroy
      User.find(params[:id]).destroy
     if user_signed_in?
+      flash[:unsubscribe] = "ご利用ありがとうございました！"
      redirect_to home_path
     else
      redirect_to home_path

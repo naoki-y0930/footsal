@@ -1,0 +1,31 @@
+ <div class="center">
+  <h1>管理者側ユーザー検索結果一覧</h1>
+ </div>
+  <div class="container">
+   <div class="row">
+    <div class="col-sm-8 col-sm-offset-2 col-lg-8 col-lg-offset-2">
+     <table class="table">
+      <thead>
+       <tr>
+       <th></th>
+       <th>名前</th>
+       <th>電話番号</th>
+       <th>パス</th>
+      </tr>
+       </thead>
+        <tbody>
+         <% @seek.each do |seek| %>
+          <tr>
+           <td><%= attachment_image_tag seek, :image, :fill, 63, 63, fallback: "no_image2.png" %></td>
+           <td><%= link_to seek.name, person_path(seek) %></td>
+           <td><%= seek.tell %></td>
+           <td><%= seek.password %></td>
+          </tr>
+         <% end %>
+        </tbody>
+       </table>
+      </div>
+      <div class="col-sm-2 col-lg-2"></div>
+     </div>
+    </div>
+   <%= link_to 'ユーザー一覧へ戻る', admins_people_path %>

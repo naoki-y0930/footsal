@@ -17,9 +17,11 @@
            <% end %>
             <%= link_to '編集する', edit_user_path %>
             <%= link_to 'pass変更', edit_user_registration_path %>
+            <%= link_to "退会", user_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "nav-link", class: "btn btn-danger" %>
+            <% else %>
             <% if @isRoom == true %>
              <p><a href="/rooms/<%= @roomId %>">チャットへ</a></p>
-            <% else %>
+             <% else %>
              <%= form_for(@room) do |f| %>
               <%= fields_for @entry do |e| %>
                <% e.hidden_field :user_id, value: @user.id %>

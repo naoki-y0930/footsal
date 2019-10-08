@@ -10,9 +10,11 @@ Rails.application.routes.draw do
   resources :posts
   root 'home#home'
   get 'home' => 'home#home'
-  get 'terms' => 'home#terms'
+  get 'home/terms' => 'home#terms'
+  get 'home/privacy' => 'home#privacy'
 
   get 'admins' => 'admins#index'
+  get 'admins/seek' => 'admins#seek'
   get 'admins/users/:id/person' => 'admins#person', as: 'person'
   get 'admins/people' => 'admins#people'
 
@@ -20,21 +22,18 @@ Rails.application.routes.draw do
   sessions:      'admins/sessions',
   passwords:     'admins/passwords',
   registrations: 'admins/registrations'
-}
-devise_for :users, controllers: {
+ }
+  devise_for :users, controllers: {
   sessions:      'users/sessions',
   passwords:     'users/passwords',
   registrations: 'users/registrations'
-}
-resources :messages, only: [:create]
-resources :rooms, only: [:create, :show, :index]
-resources :users, except: [:create] do
-  collection do
+ }
+  resources :messages, only: [:create]
+  resources :rooms, only: [:create, :show, :index]
+  resources :users, except: [:create] do
+   collection do
     get 'search'
+   end
   end
-  member do
-    get '/talks' => 'users#talks'
-  end
-end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-end
+ end

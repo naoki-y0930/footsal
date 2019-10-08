@@ -1,5 +1,9 @@
 class AdminsController < ApplicationController
 
+  def seek
+    @seek = User.search(params[:seek])
+  end
+
   def index
 
   end
