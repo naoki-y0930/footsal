@@ -72,3 +72,4 @@ gem 'kaminari','~> 1.1.1'
 gem 'paranoia'
 gem 'devise'
 gem 'telephone_number'
+gem 'whenever', require: false
