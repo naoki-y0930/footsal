@@ -1,5 +1,5 @@
 
-<h1>春木翔</h1>
+
      <!-- サインアップ、サインイン時 -->
      <% if flash[:entry] %>
        <p><%= flash[:entry] %></p>
@@ -13,13 +13,52 @@
       <p><%= flash[:unsubscribe] %></p>
       <% end %>
 
+    <div class="header-image"></div>
 
-<%= link_to 'user一覧', users_path %>
+  <div class="frame">
+   <section>
+    <div class="main1">
+     <h2 class="center margin1">新チーム情報</h2>
+      <div class="contain">
+       <% @newuser.each do |new| %>
+        <div class="flex">
+         <div class="item1"><%= attachment_image_tag new, :image, :fill, 300, 300, fallback: "no_image.png" %></div>
+         <div class="item2 center font1"><%= new.team_name %></div>
+        </div>
+       <% end %>
+      </div>
+     </div>
+    </section>
 
-<%= link_to '募集する', new_post_path %>
-<%= link_to '掲示板をみる', posts_path %>
-<%= link_to 'お問い合わせ', contacts_new_path %>
-<%= link_to '利用規約', home_terms_path %>
-<%= link_to 'ご利用にあたっての注意点', home_caution_path %>
-<%= link_to 'プライバシーポリシー', home_privacy_path %>
-<%= link_to 'トークルーム一覧', rooms_path %>
+  <section>
+   <div class="main2">
+    <h2 class="center margin1">マッチメイク</h2>
+     <div class="contain">
+      <div class="team"><a href="#"></a></div>
+      <div class="post"><a href="#"></a></div>
+      <div class="board"><a href="#"></a></div>
+     </div>
+    </div>
+   </section>
+
+  <section>
+    <h2 class="center margin1">About</h2>
+     <div class="contain">
+     <div class="aboutbox">
+       <div class="about1"><img src="/assets/footsal2.png" alt="footsal2" class="soccerball"></div>
+       <div class="about2"><h4>フッサルって？</h4></div>
+       <div class="about3"><p>「フットワーク軽くフットサル」の略称です。フットサルのマッチメイクを、もっと手軽に・スピーディに。それがフッサルのコンセプトです。</p></div>
+     </div>
+     <div class="aboutbox">
+       <div class="about1"><img src="/assets/footsal2.png" alt="footsal2" class="soccerball"></div>
+       <div class="about2"><h4>他のチームと繋がれる</h4></div>
+       <div class="about3"><p>掲示板投稿で対戦相手を募集できます。また、ダイレクトメール機能で日時や場所の調整などユーザー同士で決めることができます。</p></div>
+     </div>
+     <div class="aboutbox">
+       <div class="about1"><img src="/assets/footsal2.png" alt="footsal2" class="soccerball"></div>
+       <div class="about2"><h4>無料で使い放題</h4></div>
+       <div class="about3"><p>全ての機能が無料で使用できます。どんどん活用してみてください。注意事項をよく守って、フットサルを楽しみましょう。</p><p><%= link_to 'ご利用にあたっての注意点', home_caution_path %></p></div>
+     </div>
+   </div>
+  </section>
+ </div>

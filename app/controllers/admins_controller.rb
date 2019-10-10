@@ -1,4 +1,6 @@
 class AdminsController < ApplicationController
+  #ApplicationControllerでauthenticate!を定義
+  before_action :authenticate!
 
   def seek
     @seek = User.search(params[:seek])

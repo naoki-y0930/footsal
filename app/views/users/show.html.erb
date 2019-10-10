@@ -37,13 +37,13 @@
                   <% end %>
 
             <% if @isRoom == true %>
-             <p><a href="/rooms/<%= @roomId %>">チャットへ</a></p>
+             <p><a href="/rooms/<%= @roomId %>">トークルームへ</a></p>
              <% else %>
              <%= form_for(@room) do |f| %>
               <%= fields_for @entry do |e| %>
                <% e.hidden_field :user_id, value: @user.id %>
               <% end %>
-            <%= f.submit "お話しする" %>
+            <%= f.submit "トークを始める" %>
            <% end %>
           <% end %>
          <% end %>

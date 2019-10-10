@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # before_action :authenticate_user!, only: [:show]
+  before_action :authenticate!, only: [:show, :edit, :update]
 
   def search
     # 検索する値が「""」と等しい場合はfalseで処理は実行されない（検索を選択していないとblankが返ってくる）
@@ -34,7 +34,6 @@ class UsersController < ApplicationController
 
   def index
      @users = User.page(params[:page]).per(5).reverse_order
-
   end
 
   def show

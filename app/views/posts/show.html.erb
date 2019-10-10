@@ -9,18 +9,17 @@
   <h4>本文</h4>
    <%= @post.body %>
   <%= link_to '戻る', posts_path %>
-
-<% if @post.user == current_user  %>
-<p>投稿を削除する</p>
-<% else %>
-  <% if @isRoom == true %>
-   <p><a href="/rooms/<%= @roomId %>">チャットへ</a></p>
+   <% if @post.user == current_user  %>
+    <p>投稿を削除する</p>
    <% else %>
-   <%= form_for(@room) do |f| %>
-    <%= fields_for @entry do |e| %>
-     <% e.hidden_field :user_id, value: @user.id %>
+    <% if @isRoom == true %>
+     <p><a href="/rooms/<%= @roomId %>">チャットへ</a></p>
+    <% else %>
+     <%= form_for(@room) do |f| %>
+      <%= fields_for @entry do |e| %>
+       <% e.hidden_field :user_id, value: @user.id %>
+      <% end %>
+     <%= f.submit "お話しする" %>
     <% end %>
-  <%= f.submit "お話しする" %>
-  <% end %>
-  <% end %>
+   <% end %>
   <% end %>
