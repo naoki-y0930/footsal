@@ -35,11 +35,3 @@ env :PATH, ENV['PATH']
 every 2.minutes do
 rake "check_post:check_delete"
 end
-
-# every 2.minutes do
-#    Post.where("created_at<?", Time.now-(2.minites)).delete_all
-# end
-
-# every 2.minutes do
-#   runner "PostsController.destroy"
-# end

@@ -28,6 +28,7 @@ class RoomsController < ApplicationController
     else
       redirect_back(fallback_location: users_path)
    end
+  render :show, layout: false
  end
 
 end

@@ -27,7 +27,7 @@
  }
 
  section{
-   margin: 100px auto; 
+   margin: 100px auto;
  }
 
 // variousscreen
@@ -45,6 +45,10 @@
  }
  .font1{
    font-size: 18px;
+   font-weight: bold;
+ }
+ .font2{
+   font-size: 20px;
    font-weight: bold;
  }
 // variousscreen
@@ -118,16 +122,84 @@
 }
 // roomindexここまで
 
-// roomindexここから
+
+// roomshowここから
+
+.room-backcolor{
+  background-color: #b3f9f224;
+  padding-top: 50px;
+  padding-bottom: 30px;
+}
+.room-name{
+  font-size: 30px;
+  font-weight: bold;
+  margin:35px 10px;
+}
 .talk-light{
   text-align: right;
 }
-// roomindexここまで
+.room-contain-me{
+  margin: 30px 0;
+}
+
+.room-talk-me{
+  font-weight: bold;
+  color: #fff;
+  background-color: skyblue;
+  display: inline-block;
+  padding: 7px;
+  border-radius: 10px 20px 0px 10px;
+}
+.talk-and-time-me{
+margin-right: 10px;
+}
+.talk-and-time-you{
+  margin-left: 10px;
+}
+.room-contain-you{
+  display: flex;
+  margin: 30px 0;
+}
+.room-talk-you{
+  font-weight: bold;
+  background-color: #8c868630;
+  display: inline-block;
+  padding: 7px;
+  border-radius: 20px 10px 10px 0;
+}
+.room-time{
+  font-size: 10px;
+  color: #767676;
+}
+
+.talk-input{
+  width: 100%;
+  min-height: 25px;
+  max-height: 250px;
+  margin-right: 10px;
+  border-radius: 4px;
+  resize: none;
+  padding: 3px;
+}
+.input-button{
+  display: flex;
+}
+.send-button{
+  width: 100px;
+  border-radius: 4px;
+}
+.send-button:hover{
+  cursor : pointer;
+  background: skyblue;
+}
+// roomshowここまで
 
 
 
 // footerここから
-
+footer{
+  margin-top: 100px;
+}
 .footer-navbar{
   padding: 0;
 }

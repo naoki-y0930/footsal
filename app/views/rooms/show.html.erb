@@ -1,39 +1,61 @@
-     <div class="center">
-       <%= @otherentry.user.name %>
-     </div>
-     <div class="container">
-       <div class="row">
-         <div class="col-sm-8 col-sm-offset-8 col-lg-8 col-lg-offset-8">
+    <!-- render :show, layout: falseでapplication.html.erbは反映していない -->
+  <!DOCTYPE html>
+   <html lang="ja">
+    <head>
+     <meta charset="utf-8">
+      <title>Footsal</title>
+       <%= csrf_meta_tags %>
+       <%= csp_meta_tag %>
+       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+       <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     </head>
+      <body>
+       <nav class="navbar navbar-expand bg-light fixed-top">
+        <a href="/rooms/"><i class="fas fa-chevron-left fa-2x navbar-brand"></i></a>
+         <div class="collapse navbar-collapse justify-content-center">
+          <div class="navbar-nav">
+           <a class="nav-item nav-link font2" href="/users/<%= @otherentry.user.id %>"><%= @otherentry.user.captain_name %></a>
+          </div>
+         </div>
+        </nav>
+         <div class="room-backcolor">
+          <div class="frame">
            <% if @message.present? %>
             <% @messages.each do |m| %>
-            <% if m.user == current_user %>
-            <%= attachment_image_tag m.user, :image, :fill, 63, 63, fallback: "no_image2.png" %>
-             <strong>
-              <br><%= m.content %>
-             </strong>
-              <%= m.created_at.strftime("%Y-%m-%d %H:%M") %>
-              <%= m.user.captain_name %>
-              <% else %>
+             <% if m.user == current_user %>
               <div class="talk-light">
-                <%= attachment_image_tag m.user, :image, :fill, 63, 63, fallback: "no_image2.png" %>
-              <strong>
-               <br><%= m.content %>
-              </strong>
-               <%= m.created_at.strftime("%Y-%m-%d %H:%M") %>
-               <%= m.user.captain_name %>
+               <div class="room-contain-me">
+                <div class="talk-and-time-me">
+                 <div class="room-talk-me"><%= simple_format(m.content) %></div>
+                  <div class="room-time"><%= m.created_at.strftime("%Y-%m-%d %H:%M") %></div>
+                 </div>
+                </div>
+               </div>
+              <% else %>
+               <div class="room-contain-you">
+                <div class="image-icon">
+                 <%= attachment_image_tag m.user, :image, :fill, 63, 63, fallback: "no_image2.png", class: 'radius' %>
+                </div>
+                 <div class="talk-and-time-you">
+                  <div class="room-talk-you"><%= simple_format(m.content) %></div>
+                   <div class="room-time"><%= m.created_at.strftime("%Y-%m-%d %H:%M") %></div>
+                  </div>
+                 </div>
+                <% end %>
+               <% end %>
+              <% else %>
+              <h3><p>メッセージはまだありません</p></h3>
+             <% end %>
+              <%= form_for @message, :url => { :controller => :messages, :action => :create } do |f| %>
+               <div class="input-button">
+                 <%= f.text_area :content, placeholder: 'メッセージを入力してください', row: 5, class: 'talk-input' %>
+                 <%= f.hidden_field :room_id, value: @room.id %>
+                 <%= f.submit '送信', class: 'send-button' %>
+                </div>
+               <% end %>
+              </div>
              </div>
-              <% end %>
-             <% end %>
-            <% else %>
-             <h3><p>メッセージはまだありません</p></h3>
-            <% end %>
-             <%= form_for @message, :url => { :controller => :messages, :action => :create } do |f| %>
-              <%= f.text_field :content, placeholder: 'メッセージを入力してください', size: 70, row: 3 %>
-              <%= f.hidden_field :room_id, value: @room.id %>
-              <%= f.submit '投稿する' %>
-             <% end %>
-
-         </div>
-         <div class="col-sm-2 col-lg-2"></div>
-       </div>
-     </div>
+            </body>
+           </html>

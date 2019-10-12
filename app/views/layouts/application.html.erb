@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
     <title>Footsal</title>
     <%= csrf_meta_tags %>
@@ -7,36 +7,45 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
    <body>
-   <header>
-    <nav class="navbar navbar-expand navbar-dark bg-primary">
-     <%= link_to "footsal", "#", id: "logo", class: "navbar-brand" %>
-     <% if user_signed_in? %>
-      <ul class="navbar-nav ml-auto">
-      <li class="nav-item"><%= link_to "ホーム", root_path, class: "nav-link" %></li>
-      <li class="nav-item"><%= link_to "マイページ", user_path(current_user), class: "nav-link" %></li>
-      <li class="nav-item"><%= link_to "トークルーム", rooms_path, class: "nav-link" %></li>
-      <li class="nav-item"><%= link_to "掲示板", posts_path, class: "nav-link" %></li>
-      <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
-     </ul>
-      <% elsif admin_signed_in? %>
-       <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><%= link_to "管理ホーム", admins_path, class: "nav-link" %></li>
-        <li class="nav-item"><%= link_to "ユーザー情報", admins_people_path, class: "nav-link" %></li>
-        <li class="nav-item"><%= link_to "掲示板へ", posts_path, class: "nav-link" %></li>
-        <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %></li>
-       </ul>
-     <% else %>
-      <ul class="navbar-nav ml-auto">
-       <li class="nav-item"><%= link_to "ホーム", root_path, class: "nav-link" %></li>
-       <li class="nav-item"><%= link_to "会員登録",new_user_registration_path, class: "nav-link" %></li>
-       <li class="nav-item"><%= link_to "ログイン", user_session_path, class: "nav-link" %></li>
-      </ul>
-      <% end %>
-     </nav>
-    </header>
+    <header>
+     <!-- navbar-expand-○でグローバルメニュー表示（なければハンバーガメニュー） -->
+      <nav class="navbar navbar-expand-lg navbar-expand-md navbar-dark bg-primary">
+       <%= link_to "footsal", "#", id: "logo", class: "navbar-brand" %>
+        <!-- <button>~</button>でハンバーガメニュー作成。data-targetで指定したIDやクラスがハンバーガメニューとなる -->
+         <button class="navbar-toggler" type="button" data-toggle="collapse"
+          data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+        </button>
+       <div class="collapse navbar-collapse" id="navbarNav">
+        <% if user_signed_in? %>
+         <ul class="nav navbar-nav ml-auto">
+          <li class="nav-item active"><%= link_to "ホーム", root_path, class: "nav-link" %></li>
+          <li class="nav-item active"><%= link_to "マイページ", user_path(current_user), class: "nav-link" %></li>
+          <li class="nav-item active"><%= link_to "トークルーム", rooms_path, class: "nav-link" %></li>
+          <li class="nav-item active"><%= link_to "掲示板", posts_path, class: "nav-link" %></li>
+          <li class="nav-item active"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
+         </ul>
+        <% elsif admin_signed_in? %>
+         <ul class="nav navbar-nav ml-auto">
+          <li class="nav-item"><%= link_to "管理ホーム", admins_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "ユーザー情報", admins_people_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "掲示板へ", posts_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %></li>
+         </ul>
+        <% else %>
+         <ul class="nav navbar-nav ml-auto">
+          <li class="nav-item"><%= link_to "ホーム", root_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "会員登録",new_user_registration_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "ログイン", user_session_path, class: "nav-link" %></li>
+         </ul>
+        <% end %>
+       </div>
+      </nav>
+     </header>
      <%= yield %>
     <footer>
      <div class="footer-navi frame contain">
