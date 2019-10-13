@@ -9,7 +9,8 @@ class RoomsController < ApplicationController
      myRoomIds << entry.room.id
     end
     @anotherEntries = Entry.where(room_id: myRoomIds).where( 'user_id != ?', current_user.id)
-  end
+    render :index, layout: false
+   end
 
    def create
      @room = Room.create
