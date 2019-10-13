@@ -31,6 +31,9 @@
  }
 
 // variousscreen
+.various-width{
+  width: 100%;
+}
  .center{
    text-align: center;
  }
@@ -53,6 +56,10 @@
  }
  .font3{
    font-size: 13px;
+   color: #484040b3;
+ }
+ .font4{
+   font-size: 16px;
    color: #484040b3;
  }
 // variousscreen
@@ -129,6 +136,16 @@
   text-align: center;
 }
 // usershowここまで
+
+// usereditここから
+.edit-select select{
+  width: 100%;
+}
+// .select-width{
+//   width: 100%;
+// }
+
+// usereditここまで
 
 
 // roomindexここから
