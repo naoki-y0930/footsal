@@ -1,14 +1,28 @@
- <% if flash[:posterror] %>
-  <p><%= flash[:posterror] %></p>
- <% end %>
-  <h1>掲示板投稿画面</h1>
-   <%= form_for(@post) do |f| %>
-   <%= render 'layouts/error_messages', model: f.object %>
-  <h4>タイトル</h4>
-   <%= f.text_field :title %>
-  <h4>本文</h4>
-   <%= f.text_area :body %>
-  <h4>条件</h4>
-   <%= f.select :conditions, [["予定を合わせて対戦", "予定を合わせて対戦"], ["いますぐ試合したい", "いますぐ試合したい"], ["わいわい試合したい", "わいわい試合したい"], ["真剣勝負!", "真剣勝負!"]] %>
-   <%= f.submit '投稿' %>
-  <% end %>
+   <div class="center">
+    <% if flash[:posterror] %>
+     <p><%= flash[:posterror] %></p>
+    </div>
+   <% end %>
+    <h1 class="center margin1">掲示板投稿</h1>
+     <div class="container">
+      <div class="row justify-content-center">
+       <div class="col-md-8">
+        <%= form_for(@post) do |f| %>
+         <%= render 'layouts/error_messages', model: f.object %>
+          <h4 class="font4">タイトル</h4>
+           <div class="form-group">
+            <%= f.text_field :title, placeholder: 'タイトル', class: 'form-control' %>
+           </div>
+          <h4 class="font4">本文</h4>
+           <div class="form-group">
+            <%= f.text_area :body, row: 5, placeholder: '入力してください', class: 'form-control' %>
+           </div>
+          <h4 class="font4">条件</h4>
+           <div class="form-group various-select">
+            <%= f.select :conditions, [["予定を合わせて対戦", "予定を合わせて対戦"], ["いますぐ試合したい", "いますぐ試合したい"], ["わいわい試合したい", "わいわい試合したい"], ["真剣勝負!", "真剣勝負!"]] %>
+           </div>
+           <%= f.submit '投稿', class: 'btn btn-primary various-width margin2' %>
+          <% end %>
+         </div>
+        </div>
+       </div>

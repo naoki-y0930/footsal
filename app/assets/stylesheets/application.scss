@@ -26,6 +26,10 @@
    margin:0 auto;
  }
 
+ ul li {
+   list-style: none;
+ }
+
  section{
    margin: 100px auto;
  }
@@ -36,6 +40,9 @@
 }
  .center{
    text-align: center;
+ }
+ .various-select select{
+   width: 100%;
  }
  .radius{
    border-radius: 50px;
@@ -138,12 +145,7 @@
 // usershowここまで
 
 // usereditここから
-.edit-select select{
-  width: 100%;
-}
-// .select-width{
-//   width: 100%;
-// }
+
 
 // usereditここまで
 

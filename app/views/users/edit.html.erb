@@ -46,15 +46,15 @@
            <%= team.text_area :introduction, rows: "5", placeholder: "introduction", class: 'form-control mw-100' %>
           </div>
          <h4 class="font4">チームレベル</h4>
-          <div class="form-group edit-select">
+          <div class="form-group various-select">
           <%= team.select :team_level, [["初級", "初級"], ["中級", "中級"],  ["上級", "上級"] ], :prompt => "選択してください", class: 'select-width' %>
          </div>
         <h4 class="font4">活動地域</h4>
-         <div class="form-group edit-select">
+         <div class="form-group various-select">
           <%= team.select :active_area, [["大阪", "大阪"], ["和歌山", "和歌山"],  ["奈良", "奈良"],  ["兵庫", "兵庫"],  ["京都", "京都"],  ["滋賀", "滋賀"] ], :prompt => "選択してください" %>
          </div>
         <h4 class="font4">活動時間</h4>
-         <div class="form-group edit-select">
+         <div class="form-group various-select">
           <%= team.select :active_time, [["朝", "朝"], ["昼", "昼"],  ["夕", "夕"],  ["夜", "夜"] ], :prompt => "選択してください" %>
          </div>
         <% end %>
