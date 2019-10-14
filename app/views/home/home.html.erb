@@ -1,5 +1,3 @@
-
-
      <!-- サインアップ、サインイン時 -->
      <% if flash[:entry] %>
        <p><%= flash[:entry] %></p>
@@ -20,11 +18,14 @@
     <div class="main1">
      <h2 class="center margin1">新チーム情報</h2>
       <div class="contain">
+        <% if @newuser.present? %>
        <% @newuser.each do |new| %>
         <div class="flex">
          <div class="item1"><%= attachment_image_tag new, :image, :fill, 300, 300, fallback: "no_image.png" %></div>
          <div class="item2 center font1"><%= new.team_name %></div>
         </div>
+       <% end %>
+        <% else %>
        <% end %>
       </div>
      </div>

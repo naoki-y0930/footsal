@@ -1,28 +1,21 @@
-  <h1>検索結果</h1>
-   <% @search.each do |search| %>
-    <h4>チーム名</h4>
-     <%= search.user.team_name %>
-    <h4>キャプテン</h4>
-     <%= search.user.captain_name %>
-    <h4>チームレベル</h4>
-     <%= search.team_level %>
-    <h4>活動地域</h4>
-     <%= search.active_area %>
-    <h4>活動時間</h4>
-     <%= search.active_time %>
-    <h4>経験者</h4>
-     <%= search.experience %>人
-    <h4>初心者</h4>
-     <%= search.beginner %>人
-    <h4>男性</h4>
-     <%= search.male %>人
-    <h4>女性</h4>
-     <%= search.female %>人
-      <% if user_signed_in? %>
-       <%= link_to 'チーム詳細', user_path(search.user) %>
-      <% else %>
-       <%= link_to 'チーム詳細', user_session_path %>
-      <% end %>
-     <% end %>
-    <br>
-   <%= link_to '検索に戻る', users_path %>
+   <section>
+    <div class="main1">
+     <h2 class="center margin1">チーム情報</h2>
+      <div class="contain">
+       <% @search.each do |search| %>
+        <div class="flex">
+         <div class="item1"><%= attachment_image_tag search.user, :image, :fill, 300, 300, fallback: "no_image.png" %></div>
+         <div class="item2 center font1"><%= search.user.team_name %></div>
+         <% if user_signed_in? %>
+         <div class="center"><%= link_to '詳細', user_path(search.user) %></div>
+         <% elsif admin_signed_in? %>
+         <div class="center"><%= link_to '管理者画面で詳細へ', person_path(search.user) %></div>
+         <% else %>
+         <div class="center"><%= link_to '詳細', user_session_path %></div>
+        <% end %>
+        </div>
+       <% end %>
+      </div>
+     </div>
+    </section>
+    <div class="center"><%= link_to '検索に戻る', users_path %></div>

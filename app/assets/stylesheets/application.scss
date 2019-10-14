@@ -34,6 +34,13 @@
    margin: 100px auto;
  }
 
+ .pagination {
+  justify-content: center;
+}
+.pagination span{
+  margin: 0 2px;
+}
+
 // variousscreen
 .various-width{
   width: 100%;
@@ -133,6 +140,17 @@
 }
 // homeここまで
 
+
+// usersindexここから
+.marginbottom1{
+  margin-bottom: 0;
+}
+.marginbottom2{
+  margin-bottom: 10px;
+}
+// usersindexここまで
+
+
 // usershowここから
 .button-width{
   width: 100%;
@@ -230,6 +248,13 @@
 
 // postsindexここまで
 
+// postsshowここから
+.posts-icon{
+  margin: 10px 10px 0 20px;
+}
+
+// postsshowここまで
+
 
 // roomindexここから
 .row-room-index{
@@ -255,7 +280,9 @@
 
 
 // roomshowここから
-
+.room-header-block{
+  height: 62px;
+}
 .room-backcolor{
   background-color: #b3f9f224;
   padding-top: 50px;

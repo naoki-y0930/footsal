@@ -1,25 +1,93 @@
-  <h1>投稿詳細</h1>
-   <%= attachment_image_tag @post.user, :image, :fill, 250, 250, fallback: "no_image.png"  %>
-  <h4>チーム名</h4>
-   <%= @post.user.team_name %>
-  <h4>キャプテン</h4>
-   <%= @post.user.captain_name %>
-  <h4>タイトル</h4>
-   <%= @post.title %>
-  <h4>本文</h4>
-   <%= @post.body %>
-  <%= link_to '戻る', posts_path %>
-   <% if @post.user == current_user  %>
-    <p>投稿を削除する</p>
-   <% else %>
-    <% if @isRoom == true %>
-     <p><a href="/rooms/<%= @roomId %>">チャットへ</a></p>
-    <% else %>
-     <%= form_for(@room) do |f| %>
-      <%= fields_for @entry do |e| %>
-       <% e.hidden_field :user_id, value: @user.id %>
-      <% end %>
-     <%= f.submit "お話しする" %>
-    <% end %>
-   <% end %>
-  <% end %>
+<a class="posts-icon" href="/posts/"><i class="fas fa-chevron-left fa-2x navbar-brand "></i></a>
+<div class="container">
+ <div class="row justify-content-center">
+  <div class="col-md-8 center">
+   <div class="double-frame">
+    <div class="posts-frame2"><p><%= @post.title %></p></div>
+     <div class="margin2"><p><%= @post.body %></p></div>
+    </div>
+   </div>
+  </div>
+ </div>
+  <% if @post.user_id == current_user.id %>
+   <div class="container">
+    <div class="row">
+     <div class="col-lg-4 col-md-6 col-sm-6 center">
+      <div class="margin1"><%= attachment_image_tag @post.user, :image, :fill, 300, 300, fallback: "no_image.png" %></div>
+       <div class="margin2"><%= link_to '編集する', edit_user_path, class: 'btn btn-success button-width' %></div>
+       <div class="margin2"><%= link_to 'pass変更', edit_user_registration_path, class: 'btn btn-primary button-width' %></div>
+       <div class="margin2"><%= link_to "退会", user_path, method: :delete, data: { confirm: '退会します。本当によろしいですか?' }, class: "btn btn-danger button-width" %></div>
+      </div>
+       <div class="col-lg-8 col-md-6 col-sm-6 ">
+        <div class="font3">名前</div>
+         <div class="font1 show-border"><%= @post.user.name %></div>
+        <div class="font3">キャプテン</div>
+         <div class="font1 show-border"><%= @post.user.captain_name %></div>
+        <div class="font3">チーム名</div>
+         <div class="font1 show-border"><%= @post.user.team_name %></div>
+          <% if @post.user.team_detail.present? %>
+           <div class="font3">男性人数</div>
+            <div class="font1 show-border"><%= @team.male %></div>
+           <div class="font3">女性人数</div>
+            <div class="font1 show-border"><%= @team.female %></div>
+           <div class="font3">経験者人数</div>
+            <div class="font1 show-border"><%= @team.experience %></div>
+           <div class="font3">初心者人数</div>
+            <div class="font1 show-border"><%= @team.beginner %></div>
+           <div class="font3">紹介文</div>
+            <div class="font1 show-border"><%= @team.introduction %></div>
+           <div class="font3">チームレベル</div>
+            <div class="font1 show-border"><%= @team.team_level %></div>
+           <div class="font3">活動地域</div>
+            <div class="font1 show-border"><%= @team.active_area %></div>
+           <div class="font3">活動時間</div>
+            <div class="font1 show-border"><%= @team.active_time %></div>
+           <% end %>
+          </div>
+         </div>
+        </div>
+       <% else %>
+       <h1 class="center margin1">ユーザー情報</h1>
+        <div class="container">
+         <div class="row">
+          <div class="col-lg-4 col-md-6 col-sm-6 center">
+           <div class="margin1"><%= attachment_image_tag @post.user, :image, :fill, 300, 300, fallback: "no_image.png" %></div>
+            <% if @isRoom == true %>
+             <!--すでにroomがあるならそのroomへ、そうでなければroomを新たにcreate-->
+             <div class="margin2 font1"><p><a href="/rooms/<%= @roomId %>">トークルームへ</a></p></div>
+            <% else %>
+             <%= form_for(@room) do |f| %>
+              <%= fields_for @entry do |e| %>
+               <% e.hidden_field :user_id, value: @post.user_id %>
+              <% end %>
+              <div class="margin2"><%= f.submit "トークを始める", class: 'btn btn-info' %></div>
+             <% end %>
+            <% end %>
+           </div>
+            <div class="col-lg-8 col-md-6 col-sm-6 ">
+             <div class="font3">キャプテン</div>
+              <div class="font1 show-border"><%= @post.user.captain_name %></div>
+             <div class="font3">チーム名</div>
+              <div class="font1 show-border"><%= @post.user.team_name %></div>
+               <% if @user.team_detail.present? %>
+                <div class="font3">男性人数</div>
+                 <div class="font1 show-border"><%= @team.male %></div>
+                <div class="font3">女性人数</div>
+                 <div class="font1 show-border"><%= @team.female %></div>
+                <div class="font3">経験者人数</div>
+                 <div class="font1 show-border"><%= @team.experience %></div>
+                <div class="font3">初心者人数</div>
+                 <div class="font1 show-border"><%= @team.beginner %></div>
+                <div class="font3">紹介文</div>
+                 <div class="font1 show-border"><%= @team.introduction %></div>
+                <div class="font3">チームレベル</div>
+                 <div class="font1 show-border"><%= @team.team_level %></div>
+                <div class="font3">活動地域</div>
+                 <div class="font1 show-border"><%= @team.active_area %></div>
+                <div class="font3">活動時間</div>
+                 <div class="font1 show-border"><%= @team.active_time %></div>
+                <% end %>
+               </div>
+              </div>
+             </div>
+            <% end %>

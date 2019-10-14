@@ -60,15 +60,18 @@
              <div class="talkblock">
               <p class="margin2"><%= ae.user.name %></p>
              <% end %>
-              <p class="font3"><%= ae.room.messages.last.content %></p>
-             </div>
+              <% if ae.room.messages.present? %>
+               <p class="font3"><%= ae.room.messages.last.content %></p>
+              <% else %>
+             <% end %>
             </div>
-           <% end %>
-          </div>
+           </div>
+          <% end %>
          </div>
         </div>
-        <div class="copyright">
-         <p>&copy; 2019 foosal</p>
-        </div>
-       </body>
-      </html>
+       </div>
+       <div class="copyright">
+        <p>&copy; 2019 foosal</p>
+       </div>
+      </body>
+     </html>
