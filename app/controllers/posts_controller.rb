@@ -2,11 +2,13 @@ class PostsController < ApplicationController
   before_action :authenticate!, only: [:new, :show, :edit, :update]
 
   def index
+     @teamdetails = TeamDetail.all
      @posts = Post.page(params[:page]).per(5).reverse_order
      @plan = Post.where(conditions: "予定を合わせて対戦").page(params[:page]).per(2).reverse_order
      @now = Post.where(conditions: "いますぐ試合したい").page(params[:page]).per(2).reverse_order
      @pleasant = Post.where(conditions: "わいわい試合したい").page(params[:page]).per(2).reverse_order
      @serious = Post.where(conditions: "真剣勝負!").page(params[:page]).per(2).reverse_order
+     render :index, layout: false
   end
 
   def new

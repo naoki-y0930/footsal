@@ -1,42 +1,120 @@
-  <h1>掲示板投稿一覧</h1>
-  <%= link_to '投稿する', new_post_path %>
-   <h4>検索</h4>
-    <div class="plan"><p style="color: limegreen;">予定を合わせて対戦</p></div>
-    <div class="now"><p style="color: tomato;">いますぐ試合したい</p></div>
-    <div class="pleasant"><p style="color: orange;">わいわい試合したい</p></div>
-    <div class="serious"><p style="color: pink;">真剣勝負!</p></div>
-   <%= link_to '投稿一覧に戻る', posts_path %>
-    <div class="change-post">
-    <% @posts.each do |post| %>
-     <h4>条件</h4>
-      <%= post.conditions %>
-       <h4>タイトル</h4>
-        <%= post.title %>
-       <br>
-        <h4>本文</h4>
-         <%= post.body %>
-        <h4>代表者</h4>
-         <%= post.user.captain_name %>
-         <% if user_signed_in? %>
-         <%= link_to '詳細', post_path(post) %>
-         <% else %>
-          <% end %>
-           <p style="font-size: 20px; color: tomato;">ここまで１投稿</p>
-          <% end %>
-          <%= paginate(@posts) %>
-         </div>
-        <!-- クリックで条件検索 -->
+ <!DOCTYPE html>
+  <html lang="ja">
+   <head>
+    <title>Footsal</title>
+     <%= csrf_meta_tags %>
+     <%= csp_meta_tag %>
+     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   <body>
+    <header>
+     <!-- navbar-expand-○でグローバルメニュー表示（なければハンバーガメニュー） -->
+      <nav class="navbar navbar-expand-lg navbar-expand-md navbar-dark bg-primary">
+       <%= link_to "footsal", "#", id: "logo", class: "navbar-brand" %>
+        <!-- <button>~</button>でハンバーガメニュー作成。data-targetで指定したIDやクラスがハンバーガメニューとなる -->
+         <button class="navbar-toggler" type="button" data-toggle="collapse"
+          data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+        </button>
+       <div class="collapse navbar-collapse" id="navbarNav">
+        <% if user_signed_in? %>
+         <ul class="nav navbar-nav ml-auto">
+          <li class="nav-item active"><%= link_to "ホーム", root_path, class: "nav-link" %></li>
+          <li class="nav-item active"><%= link_to "マイページ", user_path(current_user), class: "nav-link" %></li>
+          <li class="nav-item active"><%= link_to "トークルーム", rooms_path, class: "nav-link" %></li>
+          <li class="nav-item active"><%= link_to "掲示板", posts_path, class: "nav-link" %></li>
+          <li class="nav-item active"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
+         </ul>
+        <% elsif admin_signed_in? %>
+         <ul class="nav navbar-nav ml-auto">
+          <li class="nav-item"><%= link_to "管理ホーム", admins_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "ユーザー情報", admins_people_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "掲示板へ", posts_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %></li>
+         </ul>
+        <% else %>
+         <ul class="nav navbar-nav ml-auto">
+          <li class="nav-item"><%= link_to "ホーム", root_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "会員登録",new_user_registration_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "ログイン", user_session_path, class: "nav-link" %></li>
+         </ul>
+        <% end %>
+       </div>
+      </nav>
+     </header>
+    <h1 class="center margin1">掲示板投稿一覧</h1>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+
+      <div class="center" id="plan"><p>予定を合わせて対戦</p></div>
+      <div class="center" id="now"><p>いますぐ試合したい</p></div>
+      <div class="center" id="pleasant"><p>わいわい試合したい</p></div>
+      <div class="center" id="serious"><p>真剣勝負!</p></div>
+
+
+            <div class="change-post">
+            <% @posts.each do |post| %>
+            <div class="posts-frame1">
+              <div class="double-frame">
+                <% if post.conditions == '予定を合わせて対戦' %>
+                <div class="change-post-condition body-plan"><%= post.conditions %></div>
+                <% elsif post.conditions == 'いますぐ試合したい' %>
+                <div class="change-post-condition body-now"><%= post.conditions %></div>
+                <% elsif post.conditions == 'わいわい試合したい' %>
+                <div class="change-post-condition body-pleasant"><%= post.conditions %></div>
+                <% elsif post.conditions == '真剣勝負!' %>
+                <div class="change-post-condition body-serious"><%= post.conditions %></div>
+                <% else %>
+                <div style="float: left;"><%= post.conditions %></div>
+                <% end %>
+                <div class="font3 time-right"><%= post.created_at.strftime("%Y-%m-%d %H:%M") %></div>
+              <div class="font1 posts-frame2 center margin2 postsblock"><p><%= link_to post.title, post_path(post) %></p></div>
+                <div class="postsblock"><p><%= post.body %></p></div>
+                 <div class="margin-right1"><%= post.user.team_name %></div>
+                  <% @teamdetails.each do |team| %>
+                   <% if post.user_id == team.user_id %>
+                      <div class="margin-right1"><span class="font3">活動地域:</span><%= team.active_area %></div>
+                      <div class="margin-right1"><span class="font3">活動時間:</span><%= team.active_time %></div>
+                       <% if user_signed_in? %>
+                      <div class="right-link"><%= link_to '詳細', post_path(post) %></div>
+                      <% else %>
+                     <% end %>
+                    </div>
+                   <% end %>
+                  <% end %>
+                 <% end %>
+                </div>
+               <%= paginate(@posts) %>
+              </div>
+             </div>
+            </div>
+           </div>
+
+           <div class="fixed-bottom  bg-light post-footer">
+            <nav class="navbar navbar-expand justify-content-around">
+             <ul class="nav navbar-nav">
+              <li class="nav-item posts-icon"><a href="/posts/new"><i class="far fa-clipboard"></i>掲示板に投稿する</a></li>
+              <li class="nav-item posts-icon"><a href="/posts"><i class="fas fa-reply"></i>投稿一覧に戻る</a></li>
+             </ul>
+            </nav>
+           </div>
+            <div class="fixed-block"></div>
+         <!-- クリックで条件検索 -->
          <script>
-          $(".plan").on('click', function() {
+          $("#plan").on('click', function() {
            $('.change-post').html('<%= j(render partial: "posts/plan", locals: {plan: @plan}) %>');
             });
-           $(".now").on('click', function() {
+           $("#now").on('click', function() {
             $('.change-post').html('<%= j(render partial: "posts/now", locals: {now: @now}) %>');
              });
-            $(".pleasant").on('click', function() {
+            $("#pleasant").on('click', function() {
              $('.change-post').html('<%= j(render partial: "posts/pleasant", locals: {pleasant: @pleasant}) %>');
               });
-             $(".serious").on('click', function() {
+             $("#serious").on('click', function() {
               $('.change-post').html('<%= j(render partial: "posts/serious", locals: {serious: @serious}) %>');
                });
              </script>

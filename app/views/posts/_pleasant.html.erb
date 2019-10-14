@@ -1,14 +1,33 @@
-<% @pleasant.each do |p| %>
- <h4>条件</h4>
-  <%= p.conditions %>
-   <h4>タイトル</h4>
-    <%= p.title %>
-   <br>
-    <h4>本文</h4>
-     <%= p.body %>
-    <h4>代表者</h4>
-     <%= p.user.captain_name %>
-      <%= link_to '詳細', post_path(p) %>
-       <p style="font-size: 20px; color: tomato;">ここまで１投稿</p>
-      <% end %>
-     <%# <%= paginate(@pleasant) %> %>
+
+    <% @pleasant.each do |p| %>
+     <div class="posts-frame1">
+      <div class="double-frame">
+       <div class="change-post-condition body-pleasant"><%= p.conditions %></div>
+        <div class="font3 time-right"><%= p.created_at.strftime("%Y-%m-%d %H:%M") %></div>
+         <div class="font1 posts-frame2 center margin2 postsblock"><p><%= link_to p.title, post_path(p) %></p></div>
+          <div class="postsblock"><p><%= p.body %></p></div>
+           <div class="margin-right1"><%= p.user.team_name %></div>
+            <% @teamdetails.each do |team| %>
+             <% if p.user_id == team.user_id %>
+              <div class="margin-right1"><span class="font3">活動地域:</span><%= team.active_area %></div>
+              <div class="margin-right1"><span class="font3">活動時間:</span><%= team.active_time %></div>
+             <% if user_signed_in? %>
+               <div class="right-link"><%= link_to '詳細', post_path(p) %></div>
+              <% else %>
+             <% end %>
+            </div>
+           <% end %>
+          <% end %>
+         <% end %>
+        </div>
+         <%= paginate(@pleasant) %>
+
+      <div class="fixed-bottom  bg-light post-footer">
+       <nav class="navbar navbar-expand justify-content-around">
+        <ul class="nav navbar-nav">
+         <li class="nav-item posts-icon"><a href="/posts/new"><i class="far fa-clipboard"></i>掲示板に投稿する</a></li>
+         <li class="nav-item posts-icon"><a href="/posts"><i class="fas fa-reply"></i>投稿一覧に戻る</a></li>
+        </ul>
+       </nav>
+      </div>
+       <div class="fixed-block"></div>

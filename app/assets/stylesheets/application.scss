@@ -144,10 +144,91 @@
 }
 // usershowここまで
 
-// usereditここから
 
+// postsindexここから
+#plan{
+  font-size: 20px;
+  background: limegreen;
+  color: #fff;
+  border-radius: 5px;
+}
+#now{
+  font-size: 20px;
+  background: tomato;
+  color: #fff;
+  border-radius: 5px;
+}
+#pleasant{
+  font-size: 20px;
+  background: orange;
+  color: #fff;
+  border-radius: 5px;
+}
+#serious{
+  font-size: 20px;
+  background: pink;
+  color: #fff;
+  border-radius: 5px;
+}
+.change-post-condition{
+  font-size: 13px;
+  float: left;
+  color: #fff;
+  padding: 2px 5px;
+  border-radius: 5px;
+}
+.body-plan{
+  background: limegreen;
+}
+.body-now{
+  background: tomato;
+}
+.body-pleasant{
+  background: orange;
+}
+.body-serious{
+  background: pink;
+}
+.time-right{
+  text-align: right;
+}
+.posts-frame2{
+  border: 1px solid #767676;
+  border-radius: 10px;
+  line-height: 43px;
+}
+.posts-frame2 p{
+  margin-bottom:0;
+}
+.double-frame{
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  border: double 5px #4ec4d3;
+}
+.right-link{
+  text-align: right;
+}
+.margin-right1{
+  margin-right: 10px;
+  display: inline-block;
+}
+.postsblock p{
+  overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+}
+.post-footer{
+  height: 50px;
+}
+.posts-icon{
+  width: 171.5px;
+  text-align: center;
+}
+.fixed-block{
+  height: 100px;
+}
 
-// usereditここまで
+// postsindexここまで
 
 
 // roomindexここから
