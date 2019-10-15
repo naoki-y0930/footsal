@@ -1,49 +1,11 @@
-  <div class="frame">
-   <h1 class="center margin1">チーム一覧</h1>
-    <div class="container">
-     <div class="row justify-content-center">
-      <div class="col-md-8">
-       <%= form_tag(search_users_path, :method => 'get') do %>
-        <h4 class="font4  marginbottom1">チームレベル</h4>
-         <div class="various-select marginbottom2">
-          <%= select_tag(:team_level, options_for_select([["初級", "初級" ], ["中級", "中級" ], ["上級", "上級" ]]), :include_blank => "選択してください") %>
-         </div>
-          <h4 class="font4 marginbottom1">活動地域</h4>
-           <div class="various-select marginbottom2">
-            <%= select_tag(:active_area, options_for_select([["大阪", "大阪" ], ["和歌山", "和歌山" ], ["奈良", "奈良" ], ["兵庫", "兵庫" ], ["京都", "京都" ], ["滋賀", "滋賀" ]]), :include_blank => "選択してください") %>
-           </div>
-          <h4 class="font4  marginbottom1">活動時間</h4>
-           <div class="various-select marginbottom2">
-           <%= select_tag(:active_time, options_for_select([["朝", "朝" ], ["昼", "昼" ], ["夕", "夕" ], ["夜", "夜" ]]), :include_blank => "選択してください") %>
-          </div>
-         <h4 class="font4  marginbottom1">男性人数</h4>
-          <div class="various-select marginbottom2">
-           <%= select_tag(:male, options_for_select((0..50).to_a ), :include_blank => "選択してください") %>
-          </div>
-         <h4 class="font4  marginbottom1">女性人数</h4>
-          <div class="various-select marginbottom2">
-           <%= select_tag(:female, options_for_select((0..50).to_a ), :include_blank => "選択してください") %>
-          </div>
-         <h4 class="font4  marginbottom1">経験者</h4>
-          <div class="various-select marginbottom2">
-           <%= select_tag(:experience, options_for_select((0..50).to_a ), :include_blank => "選択してください") %>
-          </div>
-         <h4 class="font4  marginbottom1">初心者</h4>
-          <div class="various-select marginbottom2">
-           <%= select_tag(:beginner, options_for_select((0..50).to_a ), :include_blank => "選択してください") %>
-          </div>
-           <%= submit_tag '検索', class: 'btn btn-info margin1 various-width' %>
-          <% end %>
-         </div>
-        </div>
-       </div>
-      </div>
+
      <section>
       <div class="main1">
-       <h2 class="center margin1">チーム情報</h2>
+          <h1 class="center margin1">チーム情報</h1>
+
         <div class="contain">
          <% @users.each do |user| %>
-          <div class="flex">
+          <div class="flex double-frame-use">
            <div class="item1"><%= attachment_image_tag user, :image, :fill, 300, 300, fallback: "no_image.png" %></div>
             <div class="item2 center font1"><%= user.team_name %></div>
            <% if user_signed_in? %>
@@ -59,3 +21,44 @@
        </div>
       </section>
      <div class=""><%= paginate(@users) %></div>
+
+     <div class="frame">
+
+       <div class="container">
+        <div class="row justify-content-center">
+         <div class="col-md-8">
+          <%= form_tag(search_users_path, :method => 'get') do %>
+           <h4 class="font4  marginbottom1">チームレベル</h4>
+            <div class="various-select marginbottom2">
+             <%= select_tag(:team_level, options_for_select([["初級", "初級" ], ["中級", "中級" ], ["上級", "上級" ]]), :include_blank => "選択してください") %>
+            </div>
+             <h4 class="font4 marginbottom1">活動地域</h4>
+              <div class="various-select marginbottom2">
+               <%= select_tag(:active_area, options_for_select([["大阪", "大阪" ], ["和歌山", "和歌山" ], ["奈良", "奈良" ], ["兵庫", "兵庫" ], ["京都", "京都" ], ["滋賀", "滋賀" ]]), :include_blank => "選択してください") %>
+              </div>
+             <h4 class="font4  marginbottom1">活動時間</h4>
+              <div class="various-select marginbottom2">
+              <%= select_tag(:active_time, options_for_select([["朝", "朝" ], ["昼", "昼" ], ["夕", "夕" ], ["夜", "夜" ]]), :include_blank => "選択してください") %>
+             </div>
+            <h4 class="font4  marginbottom1">男性人数</h4>
+             <div class="various-select marginbottom2">
+              <%= select_tag(:male, options_for_select((0..50).to_a ), :include_blank => "選択してください") %>
+             </div>
+            <h4 class="font4  marginbottom1">女性人数</h4>
+             <div class="various-select marginbottom2">
+              <%= select_tag(:female, options_for_select((0..50).to_a ), :include_blank => "選択してください") %>
+             </div>
+            <h4 class="font4  marginbottom1">経験者</h4>
+             <div class="various-select marginbottom2">
+              <%= select_tag(:experience, options_for_select((0..50).to_a ), :include_blank => "選択してください") %>
+             </div>
+            <h4 class="font4  marginbottom1">初心者</h4>
+             <div class="various-select marginbottom2">
+              <%= select_tag(:beginner, options_for_select((0..50).to_a ), :include_blank => "選択してください") %>
+             </div>
+              <%= submit_tag '検索', class: 'btn btn-info margin1 various-width' %>
+             <% end %>
+            </div>
+           </div>
+          </div>
+         </div>

@@ -1,19 +1,23 @@
-<h1>お問い合わせ</h1>
-
-<% if flash[:contacterror] %>
-  <p><%= flash[:contacterror] %></p>
- <% end %>
-
-
-<%= form_for @contact,:url => {:action => :create} do |f| %>
-<div class="form-group">
-  <%= f.label :email, 'メールアドレス' %>
-  <%= f.text_field :email, class: 'form-control' %>
-</div>
-
-<div class="form-group">
-  <%= f.label :message, 'お問い合わせ内容' %>
-  <%= f.text_area :message, size: '10x10', class: 'form-control' %>
-</div>
-<%= f.submit '送信' %>
-<% end %>
+ <h1 class="center margin1">お問い合わせ</h1>
+  <div class="center">
+   <% if flash[:contacterror] %>
+    <p><%= flash[:contacterror] %></p>
+   </div>
+  <% end %>
+   <div class="container">
+    <div class="row justify-content-center">
+     <div class="col-md-8">
+      <%= form_for @contact,:url => {:action => :create} do |f| %>
+       <div class="form-group">
+        <%= f.label :email, 'メールアドレス' %>
+        <%= f.text_field :email, class: 'form-control' %>
+       </div>
+      <div class="form-group">
+       <%= f.label :message, 'お問い合わせ内容' %>
+       <%= f.text_area :message, size: '10x10', class: 'form-control' %>
+      </div>
+       <%= f.submit '送信', class: 'btn btn-primary various-width margin2' %>
+      <% end %>
+     </div>
+    </div>
+   </div>

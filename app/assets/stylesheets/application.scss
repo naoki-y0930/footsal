@@ -20,7 +20,8 @@
    padding: 0;
    box-sizing: border-box;
  }
-// bodyの大枠
+
+ // variousscreen
  .frame{
    width: 80%;
    margin:0 auto;
@@ -41,7 +42,6 @@
   margin: 0 2px;
 }
 
-// variousscreen
 .various-width{
   width: 100%;
 }
@@ -92,6 +92,8 @@
 
 .item2{
  margin: 10px;
+ border: 1px solid;
+ border-radius: 10px;
 }
 
 .contain{
@@ -142,6 +144,11 @@
 
 
 // usersindexここから
+.double-frame-use{
+  padding: 0.5em 1em;
+  border: double 5px #4ec4d3;
+}
+
 .marginbottom1{
   margin-bottom: 0;
 }
