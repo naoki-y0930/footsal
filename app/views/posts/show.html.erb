@@ -9,14 +9,48 @@
    </div>
   </div>
  </div>
-  <% if @post.user_id == current_user.id %>
+ <% if admin_signed_in? %>
+ <div class="container">
+  <div class="row">
+   <div class="col-lg-4 col-md-6 col-sm-6 center">
+    <div class="margin1"><%= attachment_image_tag @post.user, :image, :fill, 300, 300, fallback: "no_image.png" %></div>
+    <div class="margin2"><%= link_to "この投稿を削除", post_path(@post), method: :delete, data: { confirm: 'この投稿を削除します、よろしいですか？' }, class: "pull-danger", class: "btn btn-danger btn-xs various-width" %></div>
+    </div>
+     <div class="col-lg-8 col-md-6 col-sm-6 ">
+      <div class="font3">名前</div>
+       <div class="font1 show-border"><%= @post.user.name %></div>
+      <div class="font3">キャプテン</div>
+       <div class="font1 show-border"><%= @post.user.captain_name %></div>
+      <div class="font3">チーム名</div>
+       <div class="font1 show-border"><%= @post.user.team_name %></div>
+        <% if @post.user.team_detail.present? %>
+         <div class="font3">男性人数</div>
+          <div class="font1 show-border"><%= @team.male %></div>
+         <div class="font3">女性人数</div>
+          <div class="font1 show-border"><%= @team.female %></div>
+         <div class="font3">経験者人数</div>
+          <div class="font1 show-border"><%= @team.experience %></div>
+         <div class="font3">初心者人数</div>
+          <div class="font1 show-border"><%= @team.beginner %></div>
+         <div class="font3">紹介文</div>
+          <div class="font1 show-border"><%= @team.introduction %></div>
+         <div class="font3">チームレベル</div>
+          <div class="font1 show-border"><%= @team.team_level %></div>
+         <div class="font3">活動地域</div>
+          <div class="font1 show-border"><%= @team.active_area %></div>
+         <div class="font3">活動時間</div>
+          <div class="font1 show-border"><%= @team.active_time %></div>
+         <% end %>
+        </div>
+       </div>
+      </div>
+  <% elsif @post.user_id == current_user.id %>
    <div class="container">
     <div class="row">
      <div class="col-lg-4 col-md-6 col-sm-6 center">
       <div class="margin1"><%= attachment_image_tag @post.user, :image, :fill, 300, 300, fallback: "no_image.png" %></div>
-       <div class="margin2"><%= link_to '編集する', edit_user_path, class: 'btn btn-success button-width' %></div>
+       <div class="margin2"><%= link_to '編集する', edit_user_path(current_user.id), class: 'btn btn-success button-width' %></div>
        <div class="margin2"><%= link_to 'pass変更', edit_user_registration_path, class: 'btn btn-primary button-width' %></div>
-       <div class="margin2"><%= link_to "退会", user_path, method: :delete, data: { confirm: '退会します。本当によろしいですか?' }, class: "btn btn-danger button-width" %></div>
       </div>
        <div class="col-lg-8 col-md-6 col-sm-6 ">
         <div class="font3">名前</div>

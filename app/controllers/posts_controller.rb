@@ -31,6 +31,11 @@ class PostsController < ApplicationController
   end
 
   def show
+    if admin_signed_in?
+      @post = Post.find(params[:id])
+      @user = @post.user
+      @team = TeamDetail.find_by(user_id: @user.id)
+    else
     @post = Post.find(params[:id])
     @user = @post.user
     @team = TeamDetail.find_by(user_id: @user.id)
@@ -51,12 +56,14 @@ class PostsController < ApplicationController
          @entry = Entry.new
        end
      end
+   end
   end
 
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
-      redirect_to posts_index
+      flash[:destroypostmessage] = '削除しました'
+      redirect_to posts_path
     else
       render :show
   end
