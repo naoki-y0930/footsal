@@ -1,33 +1,65 @@
-<h1>ユーザー編集</h1>
- <%= form_for @user, :url => { :controller => :admins, :action => :update } do |f| %>
-    <%= render 'layouts/error_messages', model: f.object %>
-<h4>名前</h4>
- <%= f.text_field :name %>
-<h4>キャプテン</h4>
- <%= f.text_field :captain_name %>
-<h4>チーム名</h4>
- <%= f.text_field :team_name %>
-<h4>電話番号</h4>
- <%= f.text_field :tell %>
-<h4>画像</h4>
- <%= f.attachment_field :image %>
-  <%= f.fields_for :team_detail do |team| %>
- <h4>経験者人数</h4>
-  <%= team.number_field :experience %>
- <h4>初心者人数</h4>
-  <%= team.number_field :beginner %>
- <h4>男性</h4>
-  <%= team.number_field :male %>
- <h4>女性</h4>
-  <%= team.number_field :female %>
- <h4>チーム紹介文</h4>
-  <%= team.text_area :introduction, rows: "3", placeholder: "introduction" %>
- <h4>チームレベル</h4>
-  <%= team.select :team_level, [["初級", "初級"], ["中級", "中級"],  ["上級", "上級"] ], :prompt => "選択してください" %>
- <h4>活動地域</h4>
-  <%= team.select :active_area, [["大阪", "大阪"], ["和歌山", "和歌山"],  ["奈良", "奈良"],  ["兵庫", "兵庫"],  ["京都", "京都"],  ["滋賀", "滋賀"] ], :prompt => "選択してください" %>
- <h4>活動時間</h4>
-  <%= team.select :active_time, [["朝", "朝"], ["昼", "昼"],  ["夕", "夕"],  ["夜", "夜"] ], :prompt => "選択してください" %>
- <% end %>
-<%= f.submit '更新する' %>
-<% end %>
+<h1 class="center margin1">ユーザー編集</h1>
+ <div class="conteiner">
+  <div class="row justify-content-center ">
+   <div class="margin1">
+     <%= form_for @user, :url => { :controller => :admins, :action => :update } do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %>
+      <h4 class="font4">名前</h4>
+       <div class="form-group">
+        <%= f.text_field :name, class: 'form-control mw-100' %>
+       </div>
+      <h4 class="font4">キャプテン</h4>
+       <div class="form-group">
+        <%= f.text_field :captain_name, class: 'form-control mw-100' %>
+       </div>
+      <h4 class="font4">チーム名</h4>
+       <div class="form-group">
+        <%= f.text_field :team_name, class: 'form-control mw-100' %>
+       </div>
+      <h4 class="font4">電話番号</h4>
+       <div class="form-group">
+        <%= f.text_field :tell, class: 'form-control mw-100' %>
+       </div>
+      <h4 class="font4">画像</h4>
+       <div class="form-group">
+        <%= f.attachment_field :image %>
+       </div>
+        <%= f.fields_for :team_detail do |team| %>
+         <h4 class="font4">経験者人数</h4>
+          <div class="form-group">
+          <%= team.number_field :experience, class: 'form-control mw-100' %>
+         </div>
+        <h4 class="font4">初心者人数</h4>
+         <div class="form-group">
+          <%= team.number_field :beginner, class: 'form-control mw-100' %>
+         </div>
+        <h4 class="font4">男性人数</h4>
+         <div class="form-group">
+          <%= team.number_field :male, class: 'form-control mw-100' %>
+         </div>
+        <h4 class="font4">女性人数</h4>
+         <div class="form-group">
+          <%= team.number_field :female, class: 'form-control mw-100' %>
+         </div>
+        <h4 class="font4">チーム紹介文</h4>
+         <div class="form-group">
+         <%= team.text_area :introduction, rows: "5", placeholder: "introduction", class: 'form-control mw-100' %>
+        </div>
+       <h4 class="font4">チームレベル</h4>
+        <div class="form-group various-select">
+        <%= team.select :team_level, [["初級", "初級"], ["中級", "中級"],  ["上級", "上級"] ], :prompt => "選択してください", class: 'select-width' %>
+       </div>
+      <h4 class="font4">活動地域</h4>
+       <div class="form-group various-select">
+        <%= team.select :active_area, [["大阪", "大阪"], ["和歌山", "和歌山"],  ["奈良", "奈良"],  ["兵庫", "兵庫"],  ["京都", "京都"],  ["滋賀", "滋賀"] ], :prompt => "選択してください" %>
+       </div>
+      <h4 class="font4">活動時間</h4>
+       <div class="form-group various-select">
+        <%= team.select :active_time, [["朝", "朝"], ["昼", "昼"],  ["夕", "夕"],  ["夜", "夜"] ], :prompt => "選択してください" %>
+       </div>
+      <% end %>
+       <%= f.submit '更新する', class: 'btn btn-info various-width' %>
+      <% end %>
+     </div>
+    </div>
+   </div>

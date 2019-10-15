@@ -20,13 +20,12 @@
         </div>
        </div>
       </section>
-     <div class=""><%= paginate(@users) %></div>
+     <div class="margin1"><%= paginate(@users) %></div>
 
      <div class="frame">
-
        <div class="container">
         <div class="row justify-content-center">
-         <div class="col-md-8">
+         <div class="col-md-8 double-frame-use">
           <%= form_tag(search_users_path, :method => 'get') do %>
            <h4 class="font4  marginbottom1">チームレベル</h4>
             <div class="various-select marginbottom2">

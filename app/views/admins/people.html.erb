@@ -1,36 +1,35 @@
-
- <%= form_tag(admins_seek_path, :method => 'get') do %>
- <%= text_field_tag :seek %>
- <%= submit_tag '検索', :name => nil %>
- <% end %>
-
-<div class="center">
- <h1>ユーザー一覧</h1>
-</div>
- <div class="container">
-  <div class="row">
-   <div class="col-sm-8 col-sm-offset-2 col-lg-8 col-lg-offset-2">
-    <table class="table">
-     <thead>
-      <tr>
-       <th></th>
-       <th>名前</th>
-       <th>電話番号</th>
-       <th>パス</th>
-      </tr>
-     </thead>
-      <tbody>
-       <% @users.each do |user| %>
-        <tr>
-         <td><%= attachment_image_tag user, :image, :fill, 63, 63, fallback: "no_image2.png" %></td>
-         <td><%= link_to user.name, person_path(user) %></td>
-         <td><%= user.tell %></td>
-         <td><%= user.password %></td>
-        </tr>
-       <% end %>
-      </tbody>
-     </table>
+   <div class="center margin1">
+    <%= form_tag(admins_seek_path, :method => 'get') do %>
+     <%= text_field_tag :seek %>
+      <%= submit_tag '検索', :name => nil %>
+     <% end %>
     </div>
-    <div class="col-sm-2 col-lg-2"></div>
-   </div>
-  </div>
+     <div class="center">
+      <h1 class="center margin1">ユーザー一覧</h1>
+     </div>
+      <div class="container">
+       <div class="row justify-content-center">
+        <div class="col-sm-8 col-sm-offset-2 col-lg-8 col-lg-offset-2">
+         <table class="table">
+          <thead>
+           <tr>
+            <th>アイコン</th>
+            <th>名前</th>
+            <th>電話番号</th>
+            <th>パス</th>
+           </tr>
+          </thead>
+         <tbody>
+          <% @users.each do |user| %>
+           <tr>
+            <td><%= attachment_image_tag user, :image, :fill, 63, 63, fallback: "no_image2.png" %></td>
+            <td><%= link_to user.name, person_path(user) %></td>
+            <td><%= user.tell %></td>
+            <td><%= user.password %></td>
+           </tr>
+          <% end %>
+         </tbody>
+        </table>
+       </div>
+       </div>
+      </div>

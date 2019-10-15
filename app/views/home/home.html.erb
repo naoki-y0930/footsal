@@ -1,33 +1,34 @@
-     <!-- サインアップ、サインイン時 -->
-     <% if flash[:entry] %>
-       <p><%= flash[:entry] %></p>
-      <% end %>
-      <!-- お問い合わせ送信後 -->
-      <% if flash[:contactsuccess] %>
-      <p><%= flash[:contactsuccess] %></p>
-      <% end %>
-      <!-- 退会後 -->
-      <% if flash[:unsubscribe] %>
-      <p><%= flash[:unsubscribe] %></p>
-      <% end %>
-
-    <div class="header-image"></div>
-
-  <div class="frame">
-   <section>
-    <div class="main1">
-     <h2 class="center margin1">新チーム情報</h2>
-      <div class="contain">
+   <!-- サインアップ、サインイン時 -->
+    <div class="center">
+     <p><%= flash[:entry] %></p>
+    <% end %>
+     <!-- お問い合わせ送信後 -->
+    <% if flash[:contactsuccess] %>
+     <p><%= flash[:contactsuccess] %></p>
+    <% end %>
+     <!-- 退会後 -->
+    <% if flash[:unsubscribe] %>
+     <p><%= flash[:unsubscribe] %></p>
+    <% end %>
+   </div>
+  <div class="header-image"></div>
+   <div class="frame">
+    <section>
+     <div class="main1">
+      <h2 class="center margin1">新チーム情報</h2>
+       <div class="contain">
         <% if @newuser.present? %>
        <% @newuser.each do |new| %>
         <div class="flex">
          <div class="item1"><%= attachment_image_tag new, :image, :fill, 300, 300, fallback: "no_image.png" %></div>
          <div class="item2 center font1"><%= new.team_name %></div>
+         <div class="item3 center"><%= link_to '詳細', user_path(new) %></div>
         </div>
        <% end %>
         <% else %>
        <% end %>
       </div>
+      <div class="time-right"><a href="/users/"><span>もっと見る</span><i class="fas fa-angle-double-right"></i></a></div>
      </div>
     </section>
 
