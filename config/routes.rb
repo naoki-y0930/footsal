@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'home/terms' => 'home#terms'
   get 'home/privacy' => 'home#privacy'
   get 'home/caution' => 'home#caution'
+  get 'home/timeout' => 'home#timeout'
 
   get 'admins' => 'admins#index'
   get 'admins/seek' => 'admins#seek'
@@ -31,6 +32,12 @@ Rails.application.routes.draw do
   passwords:     'users/passwords',
   registrations: 'users/registrations'
  }
+
+  get 'application/session_time'
+  devise_scope :user do
+    match 'active' => 'users/sessions#active', via: :get
+    match 'timeout' => 'users/sessions#timeout', via: :get
+  end
   resources :messages, only: [:create]
   resources :rooms, only: [:create, :show, :index]
   resources :users, except: [:create] do

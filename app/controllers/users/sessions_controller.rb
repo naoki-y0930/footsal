@@ -18,6 +18,16 @@ class Users::SessionsController < Devise::SessionsController
   #   super
   # end
 
+  # gem auto_session_timeout
+  def active
+    render_session_status
+  end
+
+  def timeout
+    # render_session_timeout
+    redirect_to home_timeout_path
+  end
+
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.

@@ -73,3 +73,4 @@ gem 'paranoia'
 gem 'devise'
 gem 'telephone_number'
 gem 'whenever', require: false
+gem 'auto-session-timeout'

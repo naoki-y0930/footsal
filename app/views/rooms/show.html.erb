@@ -12,6 +12,11 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
      </head>
       <body>
+        <!-- gem auto_session_timeout -->
+        <% if user_signed_in? %>
+        <div class="user_logged"></div>
+        <%= auto_session_timeout_js %>
+      <% end %>
         <div class="room-header-block"></div>
        <nav class="navbar navbar-expand bg-light fixed-top">
         <a href="/rooms/"><i class="fas fa-chevron-left fa-2x navbar-brand"></i></a>

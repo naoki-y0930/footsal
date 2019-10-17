@@ -10,6 +10,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
     <body>
+      <!-- gem auto_session_timeout -->
+      <% if user_signed_in? %>
+      <div class="user_logged"></div>
+      <%= auto_session_timeout_js %>
+    <% end %>
      <header>
       <!-- navbar-expand-○でグローバルメニュー表示（なければハンバーガメニュー） -->
        <nav class="navbar navbar-expand-lg navbar-expand-md navbar-dark bg-primary">
@@ -24,6 +29,7 @@
           <ul class="nav navbar-nav ml-auto">
            <li class="nav-item active"><%= link_to "ホーム", root_path, class: "nav-link" %></li>
            <li class="nav-item active"><%= link_to "マイページ", user_path(current_user), class: "nav-link" %></li>
+           <li class="nav-item active"><%= link_to "チーム一覧", users_path, class: "nav-link" %></li>
            <li class="nav-item active"><%= link_to "トークルーム", rooms_path, class: "nav-link" %></li>
            <li class="nav-item active"><%= link_to "掲示板", posts_path, class: "nav-link" %></li>
            <li class="nav-item active"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %></li>

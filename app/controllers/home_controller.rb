@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
 
+
   def home
     if User.last(3).nil?
     else
@@ -7,4 +8,15 @@ class HomeController < ApplicationController
    end
   end
 
-end
+    def caution
+    end
+
+    def privacy
+    end
+
+    def terms
+    end
+
+    def timeout
+    end
+ end

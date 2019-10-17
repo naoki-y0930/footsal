@@ -17,3 +17,17 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+// 画面を使用するたびに「○分後にログアウト」にリセットされるため、サイト使用中はセッションが切れない
+$(document).ready(function(){
+if($(".user_logged").is(":visible") == true )
+{
+    $(document).on( "keypress keydown", function () {
+        console.log("hello");
+        $.ajax({
+            type:"GET",
+            url:"/application/session_time",
+            dataType:"html",
+        });
+    });
+}
+});

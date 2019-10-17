@@ -1,67 +1,77 @@
    <!-- サインアップ、サインイン時 -->
-    <div class="center">
-      <% if flash[:entry] %>
-     <p><%= flash[:entry] %></p>
+    <% if flash[:entry] %>
+     <div class="alert alert-success mb-0 center home-message" role="alert">
+      <p><%= flash[:entry] %></p>
+     </div>
+    <% end %>
+   <!-- ログアウト時 -->
+    <% if flash[:logout] %>
+     <div class="alert alert-success mb-0 center home-message" role="alert">
+      <p><%= flash[:logout] %></p>
+     </div>
     <% end %>
      <!-- お問い合わせ送信後 -->
-    <% if flash[:contactsuccess] %>
-     <p><%= flash[:contactsuccess] %></p>
-    <% end %>
+      <% if flash[:contactsuccess] %>
+       <div class="alert alert-success mb-0 center home-message" role="alert">
+        <p><%= flash[:contactsuccess] %></p>
+       </div>
+      <% end %>
      <!-- 退会後 -->
-    <% if flash[:unsubscribe] %>
-     <p><%= flash[:unsubscribe] %></p>
-    <% end %>
-   </div>
-  <div class="header-image"></div>
-   <div class="frame">
-    <section>
-     <div class="main1">
-      <h2 class="center margin1">新チーム情報</h2>
-       <div class="contain">
-        <% if @newuser.present? %>
-       <% @newuser.each do |new| %>
-        <div class="flex">
-         <div class="item1"><%= attachment_image_tag new, :image, :fill, 300, 300, fallback: "no_image.png" %></div>
-         <div class="item2 center font1"><%= new.team_name %></div>
-         <div class="item3 center"><%= link_to '詳細', user_path(new) %></div>
+      <% if flash[:unsubscribe] %>
+       <div class="alert alert-success mb-0 center home-message" role="alert">
+        <p><%= flash[:unsubscribe] %></p>
+       </div>
+      <% end %>
+    <div class="header-image"></div>
+     <div class="frame">
+      <section>
+       <div class="main1">
+        <h2 class="center margin1">新チーム情報</h2>
+         <div class="contain">
+          <% if @newuser.present? %>
+         <% @newuser.each do |new| %>
+          <div class="flex">
+           <div class="item1"><%= attachment_image_tag new, :image, :fill, 300, 300, fallback: "no_image.png" %></div>
+           <div class="item2 center font1"><%= new.team_name %></div>
+           <div class="item3 center"><%= link_to '詳細', user_path(new) %></div>
+          </div>
+         <% end %>
+          <% else %>
+         <% end %>
         </div>
-       <% end %>
-        <% else %>
-       <% end %>
+        <div class="time-right"><a href="/users/"><span>もっと見る</span><i class="fas fa-angle-double-right"></i></a></div>
+       </div>
+      </section>
+
+    <section>
+     <div class="main2">
+      <h2 class="center margin1">マッチメイク</h2>
+       <div class="contain">
+        <div class="team relative"><a href="/users"><img src="assets/footsal6.jpg" alt="footsal4"><p>登録チーム<br>一覧</p></a></div>
+        <div class="post relative"><a href="/posts/new"><img src="assets/footsal4.jpg" alt="footsal3"><p>対戦相手を<br>募集する</p></a></div>
+        <div class="board"><a href="/posts"><img src="assets/footsal3.jpg" alt="footsal5"><p>掲示板から<br>探す</p></a></div>
+       </div>
       </div>
-      <div class="time-right"><a href="/users/"><span>もっと見る</span><i class="fas fa-angle-double-right"></i></a></div>
+     </section>
+
+    <section>
+      <h2 class="center margin1">About</h2>
+       <div class="contain">
+       <div class="aboutbox">
+         <div class="about1"><img src="/assets/footsal2.png" alt="footsal2" class="soccerball"></div>
+         <div class="about2"><h4>フッサルって？</h4></div>
+         <div class="about3"><p>「フットワーク軽くフットサル」の略称です。フットサルのマッチメイクを、もっと手軽に・スピーディに。それがフッサルのコンセプトです。</p></div>
+       </div>
+       <div class="aboutbox">
+         <div class="about1"><img src="/assets/footsal2.png" alt="footsal2" class="soccerball"></div>
+         <div class="about2"><h4>他のチームと繋がれる</h4></div>
+         <div class="about3"><p>掲示板投稿で対戦相手を募集できます。また、ダイレクトメール機能で日時や場所の調整などユーザー同士で決めることができます。</p></div>
+       </div>
+       <div class="aboutbox">
+         <div class="about1"><img src="/assets/footsal2.png" alt="footsal2" class="soccerball"></div>
+         <div class="about2"><h4>無料で使い放題</h4></div>
+         <div class="about3"><p>全ての機能が無料で使用できます。どんどん活用してみてください。注意事項をよく守って、フットサルを楽しみましょう。</p><p><%= link_to 'ご利用にあたっての注意点', home_caution_path %></p></div>
+       </div>
      </div>
     </section>
-
-  <section>
-   <div class="main2">
-    <h2 class="center margin1">マッチメイク</h2>
-     <div class="contain">
-      <div class="team"><a href="#"></a></div>
-      <div class="post"><a href="#"></a></div>
-      <div class="board"><a href="#"></a></div>
-     </div>
-    </div>
-   </section>
-
-  <section>
-    <h2 class="center margin1">About</h2>
-     <div class="contain">
-     <div class="aboutbox">
-       <div class="about1"><img src="/assets/footsal2.png" alt="footsal2" class="soccerball"></div>
-       <div class="about2"><h4>フッサルって？</h4></div>
-       <div class="about3"><p>「フットワーク軽くフットサル」の略称です。フットサルのマッチメイクを、もっと手軽に・スピーディに。それがフッサルのコンセプトです。</p></div>
-     </div>
-     <div class="aboutbox">
-       <div class="about1"><img src="/assets/footsal2.png" alt="footsal2" class="soccerball"></div>
-       <div class="about2"><h4>他のチームと繋がれる</h4></div>
-       <div class="about3"><p>掲示板投稿で対戦相手を募集できます。また、ダイレクトメール機能で日時や場所の調整などユーザー同士で決めることができます。</p></div>
-     </div>
-     <div class="aboutbox">
-       <div class="about1"><img src="/assets/footsal2.png" alt="footsal2" class="soccerball"></div>
-       <div class="about2"><h4>無料で使い放題</h4></div>
-       <div class="about3"><p>全ての機能が無料で使用できます。どんどん活用してみてください。注意事項をよく守って、フットサルを楽しみましょう。</p><p><%= link_to 'ご利用にあたっての注意点', home_caution_path %></p></div>
-     </div>
    </div>
-  </section>
- </div>
