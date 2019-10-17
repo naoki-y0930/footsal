@@ -9,6 +9,18 @@ class RoomsController < ApplicationController
      myRoomIds << entry.room.id
     end
     @anotherEntries = Entry.where(room_id: myRoomIds).where( 'user_id != ?', current_user.id)
+
+    unreads = []
+    @anotherEntries.each do |ae|
+     ae.user.messages.each do |message|
+      if message.read_flg == 1
+         unreads << message.read_flg
+      end
+    end
+  end
+       @unreads = 0
+       @unreads += unreads.sum
+
     render :index, layout: false
    end
 
@@ -23,6 +35,12 @@ class RoomsController < ApplicationController
      @room = Room.find(params[:id])
      if Entry.where(user_id: current_user.id, room_id: @room.id).present?
       @messages = @room.messages
+     @messages.each do |message|
+      if message.read_flg == 1 && message.user_id != current_user.id
+          message.read_flg = 0
+          message.save
+      end
+     end
       @message = Message.new
       @entries = @room.entries
       @otherentry = @entries.find_by( 'user_id != ?', current_user.id)

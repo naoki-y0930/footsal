@@ -35,6 +35,19 @@
    margin: 100px auto;
  }
 
+ .badge{
+   position: relative;
+ }
+ .unread-num{
+   position: absolute;
+   top: 0;
+   right: 0;
+   color: #fff;
+   background: tomato;
+   border-radius: 50px;
+   padding: 4px;
+ }
+
  .pagination {
   justify-content: center;
 }

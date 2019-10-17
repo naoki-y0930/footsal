@@ -30,7 +30,12 @@
            <li class="nav-item active"><%= link_to "ホーム", root_path, class: "nav-link" %></li>
            <li class="nav-item active"><%= link_to "マイページ", user_path(current_user), class: "nav-link" %></li>
            <li class="nav-item active"><%= link_to "チーム一覧", users_path, class: "nav-link" %></li>
-           <li class="nav-item active"><%= link_to "トークルーム", rooms_path, class: "nav-link" %></li>
+           <li class="nav-item active badge"><%= link_to "トークルーム", rooms_path, class: "nav-link" %>
+            <% if @unreads == 0 %>
+           <% else %>
+            <span class="unread-num"><%= @unreads %></span>
+           <% end %>
+           </li>
            <li class="nav-item active"><%= link_to "掲示板", posts_path, class: "nav-link" %></li>
            <li class="nav-item active"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
           </ul>
@@ -68,7 +73,21 @@
              <% end %>
               <% if ae.room.messages.present? %>
                <p class="font3"><%= ae.room.messages.last.content %></p>
+                <% array = [] %>
+                 <% ae.user.messages.each do |message| %>
+                  <% if message.read_flg == 1 %>
+                   <% total = message.read_flg %>
+                    <% array << total %>
+                   <% end %>
+                  <% end %>
+                 <% if array.sum == 0 %>
+                  <p>0</p>
+                 <% else %>
+                  <div class=""><%= array.sum %></div>
+                 <% end %>
+
               <% else %>
+              <p class="font3">メッセージがありません</p>
              <% end %>
             </div>
            </div>

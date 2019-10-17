@@ -3,10 +3,10 @@ class ApplicationController < ActionController::Base
 before_action :configure_permitted_parameters, if: :devise_controller?
 # gem auto_session_timeout
 # auto_session_timeout 1.minutes
-   @session_time = 1.minutes
+   @session_time = 30.minutes
    auto_session_timeout @session_time
   def session_time
-    @session_time = 1.minutes
+    @session_time = 30.minutes
   end
 
   def authenticate!

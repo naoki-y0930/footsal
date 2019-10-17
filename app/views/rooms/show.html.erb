@@ -52,11 +52,12 @@
                 <% end %>
                <% end %>
               <% else %>
-              <h3><p>メッセージはまだありません</p></h3>
+              <h3 class="center"><p>メッセージはまだありません</p></h3>
              <% end %>
               <%= form_for @message, :url => { :controller => :messages, :action => :create } do |f| %>
                <div class="input-button">
                  <%= f.text_area :content, placeholder: 'メッセージを入力してください', row: 5, class: 'talk-input' %>
+                 <%= f.hidden_field :read_flg, value: 1 %>
                  <%= f.hidden_field :room_id, value: @room.id %>
                  <%= f.submit '送信', class: 'send-button' %>
                 </div>
