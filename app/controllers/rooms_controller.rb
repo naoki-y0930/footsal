@@ -9,17 +9,17 @@ class RoomsController < ApplicationController
      myRoomIds << entry.room.id
     end
     @anotherEntries = Entry.where(room_id: myRoomIds).where( 'user_id != ?', current_user.id)
-
+     # 総未読数取得
     unreads = []
     @anotherEntries.each do |ae|
      ae.user.messages.each do |message|
       if message.read_flg == 1
          unreads << message.read_flg
       end
-    end
-  end
-       @unreads = 0
-       @unreads += unreads.sum
+     end
+   end
+     @unreads = 0
+     @unreads += unreads.sum
 
     render :index, layout: false
    end

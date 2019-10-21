@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
    # usernameを必須・一意とする
    validates_uniqueness_of :name, :team_name, :captain_name, :tell
-   validates_presence_of :name, :team_name, :captain_name, :tell
+   validates_presence_of :name, :team_name, :captain_name, :tell, :password
    # DM機能
    has_many :messages, dependent: :destroy
    has_many :entries, dependent: :destroy

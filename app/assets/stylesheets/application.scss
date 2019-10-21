@@ -35,17 +35,18 @@
    margin: 100px auto;
  }
 
- .badge{
+ .active{
    position: relative;
  }
- .unread-num{
+ .active .unread-num{
    position: absolute;
-   top: 0;
+   top: -4px;
    right: 0;
    color: #fff;
    background: tomato;
    border-radius: 50px;
-   padding: 4px;
+   padding: 3px;
+   font-size: 11px;
  }
 
  .pagination {
@@ -104,15 +105,44 @@
   width: 100%;
   height: 550px;
   margin: 0 ;
-  background: url("hujitaena116.jpg") no-repeat center center / cover;
+  background: url("footsal9.jpg") no-repeat center center / cover;
+}
+
+.fixed-basic{
+  height: 60px;
+  line-height: 60px;
+  margin-bottom: 70px;
+  font-family: 'Quicksand',sans-serif;
+  color: #fff;
+  text-shadow:
+  1px 1px 1px #fff,
+  1px -1px 1px #fff,
+  -1px 1px 1px #000,
+  -1px -1px 1px #000,
+  0 0 22px #000;
+}
+.fixed1{
+  background: url("footsal11.jpg") no-repeat center center / cover;
+  background-attachment: fixed;
+}
+.fixed2{
+  background: url("footsal7.jpg") no-repeat center center / cover;
+  background-attachment: fixed;
+}
+.fixed3{
+  background: url("footsal10.jpg") no-repeat center center / cover;
+  background-attachment: fixed;
 }
 
 .flex{
   margin:0 auto 30px;
 }
+.item1{
+  box-shadow: 5px 10px 20px rgba(0,0,0,0.35);
+}
 
 .item2{
- margin: 10px;
+ margin: 20px;
  border: 1px solid;
  border-radius: 10px;
 }
@@ -135,6 +165,7 @@
   height: 300px;
   object-fit: cover;
   object-position: 0% 100%;
+  box-shadow: 5px 10px 20px rgba(0,0,0,0.35);
 }
 .team p{
   position: absolute;
@@ -163,6 +194,7 @@
   height: 300px;
   object-fit: cover;
   object-position: 15% 25%;
+  box-shadow: 5px 10px 20px rgba(0,0,0,0.35);
 }
 .post p{
   position: absolute;
@@ -190,6 +222,7 @@
   width: 300px;
   height: 300px;
   object-fit: cover;
+  box-shadow: 5px 10px 20px rgba(0,0,0,0.35);
 }
 .board p{
   position: absolute;
@@ -366,8 +399,19 @@
 }
 .talkblock p{
   overflow: hidden;
-   text-overflow: ellipsis;
-   white-space: nowrap;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.unread-room-num{
+  width: 30px;
+  height: 30px;
+  margin: 10px auto;
+  padding: 6px;
+  color: #fff;
+  background: tomato;
+  border-radius: 50px;
+  font-size: 11px;
+
 }
 // roomindexここまで
 

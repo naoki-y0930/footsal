@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate!, only: [:show, :edit, :update]
+  before_action :new_message_badge, if: :user_signed_in?
 
   def search
     # 検索する値が「""」と等しい場合はfalseで処理は実行されない（検索を選択していないとblankが返ってくる）

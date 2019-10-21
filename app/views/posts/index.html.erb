@@ -30,7 +30,13 @@
           <li class="nav-item active"><%= link_to "ホーム", root_path, class: "nav-link" %></li>
           <li class="nav-item active"><%= link_to "マイページ", user_path(current_user), class: "nav-link" %></li>
           <li class="nav-item active"><%= link_to "チーム一覧", users_path, class: "nav-link" %></li>
-          <li class="nav-item active"><%= link_to "トークルーム", rooms_path, class: "nav-link" %></li>
+          <li class="nav-item active"><%= link_to "トークルーム", rooms_path, class: "nav-link" %>
+            <% if @unreads == 0 %>
+           <% else %>
+           <!--Applicationhelper.rbに記載 -->
+            <%= new_message_badge %>
+           <% end %>
+          </li>
           <li class="nav-item active"><%= link_to "掲示板", posts_path, class: "nav-link" %></li>
           <li class="nav-item active"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
          </ul>

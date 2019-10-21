@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate!, only: [:new, :show, :edit, :update]
+  before_action :new_message_badge, if: :user_signed_in?
 
   def index
      @teamdetails = TeamDetail.all

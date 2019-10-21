@@ -22,7 +22,8 @@
        <%= f.submit "ログイン", class: 'btn btn-primary various-width' %>
       </div>
      <% end %>
-    <%= render "users/shared/links" %>
+     <div class="margin1"><%= link_to "会員登録がまだの方", new_registration_path(resource_name) %><br /></div>
+     <div class="margin1"><%= link_to "パスワードを忘れたらお問い合わせからお願いします", contacts_new_path %></div>
    </div>
   </div>
  </div>
