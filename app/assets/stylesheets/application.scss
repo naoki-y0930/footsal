@@ -98,6 +98,11 @@
 
 
 // homeここから
+.navbar-brand img{
+  height: 60px;
+  width: 100px;
+  object-fit: cover;
+}
 .home-message p{
   margin-bottom:0;
 }
