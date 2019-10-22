@@ -3,7 +3,7 @@
      <h2 class="center margin1">チーム情報</h2>
       <div class="contain">
        <% @search.each do |search| %>
-        <div class="flex">
+        <div class="flex double-frame-use">
          <div class="item1"><%= attachment_image_tag search.user, :image, :fill, 300, 300, fallback: "no_image.png" %></div>
          <div class="item2 center font1"><%= search.user.team_name %></div>
          <% if user_signed_in? %>
