@@ -92,10 +92,6 @@
  }
 // variousscreen
 
-// 管理者indexここから
-
-// 管理者indexここまで
-
 
 // homeここから
 .navbar-brand img{
@@ -111,8 +107,33 @@
   height: 550px;
   margin: 0 ;
   background: url("/images/footsal9.jpg") no-repeat center center / cover;
+  position: relative;
 }
-
+.header-image p{
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 30px;
+  font-family: 'Quicksand',sans-serif;
+  color: #fff;
+  text-shadow:
+  1px 1px 1px #fff,
+  1px -1px 1px #fff,
+  -1px 1px 1px #000,
+  -1px -1px 1px #000,
+  0 0 22px #000;
+}
+.header-image span{
+  font-size: 50px;
+  font-family: 'Quicksand',sans-serif;
+  color: #fff;
+  text-shadow:
+  1px 1px 1px #fff,
+  1px -1px 1px #fff,
+  -1px 1px 1px #000,
+  -1px -1px 1px #000,
+  0 0 22px #000;
+}
 .fixed-basic{
   height: 60px;
   line-height: 60px;
@@ -162,8 +183,6 @@
   width: 300px;
   height: 300px;
   margin: 0 auto 67px;
-  // background-color: tomato;
-  // background: url("footsal3.jpg") no-repeat center center / cover;
 }
 .team img{
   width: 300px;
@@ -192,7 +211,6 @@
   width: 300px;
   height: 300px;
   margin: 0 auto 67px;
-  // background-color: skyblue;
 }
 .post img{
   width: 300px;
@@ -221,7 +239,6 @@
   width: 300px;
   height: 300px;
   margin: 0 auto 67px;
-  // background-color: limegreen;
 }
 .board img{
   width: 300px;
@@ -393,7 +410,6 @@
 }
 .block{
   border: 1px solid #76767676;
-  // height: 180px;
 }
 .imageblock{
   display: inline-block;

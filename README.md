@@ -1,24 +1,57 @@
-# README
+# サイト名：foosal（フッサル）
+フットサルチームのマッチングサイト。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 作成したきっかけ
+自身がキャプテンを務めるフットサルチームが中々試合ができないことがありました。それぞれ仕事があるので、日程の調整など難しく、そのため人数を集めにくい状況でした。
+また、対戦相手がいないので人数が10人以上いないと試合ができませんでした。
+対戦相手がいれば、もっと手軽に試合ができてフットサルが楽しめると思ったのがきっかけです。
 
-Things you may want to cover:
+# 使用言語
+HTML
+CSS
+Bootstrap4
+Ruby2.5.5
+RubyOnRails5.2.3
+jQuery3
 
-* Ruby version
+# 使用技術
+・投稿機能
+・バッチ処理（投稿定期削除、gem whenever）
+・ユーザーサインアップ・ログイン・退会機能（gem devise）
+・管理者権限で強制退会機能（gem paranoia）
+・ユーザーセッション管理（自動ログアウト）
+・DM機能
+・検索機能（チーム検索）
+・ActionMailer
 
-* System dependencies
 
-* Configuration
+# 使い方
+（まずはじめにですが、フットサルチーム（５人以上）を有しているかたが利用対象となります。
+個サルなどを利用する機能はありません。）
 
-* Database creation
+自身のフットサルチームがある方はまず、ユーザー登録します（原則チームの代表者）。
+自分の情報とチームの情報を入力していただくことが可能です。
+ログイン後、ユーザーだけが利用できる機能も含めて使用することが可能となります。
+・掲示板投稿閲覧
+・掲示板に募集内容を投稿
+・DM機能でユーザー同士のやりとりが可能
+・チーム検索機能で自分たちに合ったチームを探す
+マッチメイクをするために上記機能をフルに活用していただけます。
+フットサルをより手軽に行えるマッチングツールとなっていますので、相手チームをなかなか見つけられない方の利用がおすすめです。
 
-* Database initialization
+# 拡張性
+現在フッサルは大阪・奈良・和歌山・兵庫・京都・滋賀・三重の地域のみしか対応していませんが、４７都道府県まで拡張することも可能です。今後拡張していく予定です。
+それに伴い、掲示板投稿の検索をより詳細に検索できるようにする予定です。
+地域別検索や、地域×レベルでの絞り込み検索といった機能も今後追加していきます（チーム検索ではすでに可能です）。
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+# 製作者
+山本直樹
 
-* Deployment instructions
-
-* ...
+# リファレンス
+（DM機能）
+https://qiita.com/nojinoji/items/2b3f8309a31cc6d88d03#userrb
+（bootstrap4）
+https://qiita.com/flowerhill/items/b727f91fa5e2756cb046
+（gem whenever）
+https://qiita.com/shi-ma-da/items/e281331e34a43c0b05d4
