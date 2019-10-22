@@ -16,7 +16,6 @@
             <th>アイコン</th>
             <th>名前</th>
             <th>電話番号</th>
-            <th>パス</th>
            </tr>
           </thead>
          <tbody>
@@ -25,7 +24,6 @@
             <td><%= attachment_image_tag user, :image, :fill, 63, 63, fallback: "no_image2.png" %></td>
             <td><%= link_to user.name, person_path(user) %></td>
             <td><%= user.tell %></td>
-            <td><%= user.password %></td>
            </tr>
           <% end %>
          </tbody>
