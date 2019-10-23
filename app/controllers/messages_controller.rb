@@ -1,5 +1,4 @@
 class MessagesController < ApplicationController
-  before_action :authenticate_user! only: [:create]
 
   def create
     if Entry.where(user_id: current_user.id, room_id: params[:message][:room_id]).present?
@@ -9,4 +8,5 @@ class MessagesController < ApplicationController
   end
   redirect_to "/rooms/#{@message.room_id}"
   end
+
 end

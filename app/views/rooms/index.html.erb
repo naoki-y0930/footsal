@@ -66,6 +66,7 @@
            <% @anotherEntries.each do |ae| %>
             <div class="block margin1">
              <%= link_to room_path(ae.room.id) do %>
+
               <div class="imageblock">
                <%= attachment_image_tag ae.user, :image, :fill, 63, 63, fallback: "no_image2.png", class: 'radius margin2' %>
               </div>
@@ -76,8 +77,8 @@
                <p class="font3"><%= ae.room.messages.last.content %></p>
                 <% array = [] %>
                 <!--各roomの未読数取得-->
-                 <% ae.user.messages.each do |message| %>
-                  <% if message.read_flg == 1 %>
+                 <% ae.room.messages.each do |message| %>
+                  <% if message.read_flg == 1 && message.user_id != current_user.id %>
                    <% total = message.read_flg %>
                     <% array << total %>
                    <% end %>

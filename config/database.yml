@@ -4,6 +4,20 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 #
+
+# production:
+#   <<: *default
+#   database: footsal
+#   adapter: mysql
+#   encoding: utf8mb4
+#   charaset: utf8mb4
+#   collation: utf8mb4_general_ci
+#   host: rds-mysql-server.cfltuuicz8jz.ap-northeast-1.rds.amazonaws.com
+#   username: root
+#   password: ny09304869
+
+
+
 default: &default
   adapter: sqlite3
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>

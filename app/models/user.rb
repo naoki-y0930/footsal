@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
    # usernameを必須・一意とする
    validates_uniqueness_of :name, :team_name, :captain_name, :tell
-   validates_presence_of :name, :team_name, :captain_name, :tell, :password
+   validates_presence_of :name, :team_name, :captain_name, :tell
    # DM機能
    has_many :messages, dependent: :destroy
    has_many :entries, dependent: :destroy
@@ -45,5 +45,6 @@ class User < ApplicationRecord
     return User.all unless seek
     User.where(['name LIKE ?', "%#{seek}%"])
  end
+
 
 end

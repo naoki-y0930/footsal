@@ -1,8 +1,7 @@
 class ApplicationController < ActionController::Base
 
 before_action :configure_permitted_parameters, if: :devise_controller?
-# gem auto_session_timeout
-# auto_session_timeout 1.minutes
+
    @session_time = 30.minutes
    auto_session_timeout @session_time
   def session_time
@@ -43,15 +42,14 @@ before_action :configure_permitted_parameters, if: :devise_controller?
      myRoomIds << entry.room.id
     end
     @anotherEntries = Entry.where(room_id: myRoomIds).where( 'user_id != ?', current_user.id)
-     # 総未読数取得
+    # 総未読数取得
     unreads = []
-    @anotherEntries.each do |ae|
-     ae.user.messages.each do |message|
-      if message.read_flg == 1
+    @room_messages = Message.where(room_id: myRoomIds)
+    @room_messages.each do |message|
+      if message.read_flg == 1 && message.user_id != current_user.id
          unreads << message.read_flg
+       end
       end
-     end
-   end
      @unreads = 0
      @unreads += unreads.sum
    else
