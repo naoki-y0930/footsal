@@ -74,6 +74,6 @@ gem 'devise'
 gem 'telephone_number'
 gem 'whenever', require: false
 gem 'auto-session-timeout'
-# group :production do
-#   gem 'mysql2'
-# end
+group :production do
+  gem 'mysql2'
+end
