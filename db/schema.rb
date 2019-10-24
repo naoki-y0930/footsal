@@ -36,8 +36,6 @@ ActiveRecord::Schema.define(version: 2019_10_17_063625) do
     t.integer "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["room_id"], name: "index_entries_on_room_id"
-    t.index ["user_id"], name: "index_entries_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -47,8 +45,6 @@ ActiveRecord::Schema.define(version: 2019_10_17_063625) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "read_flg"
-    t.index ["room_id"], name: "index_messages_on_room_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|

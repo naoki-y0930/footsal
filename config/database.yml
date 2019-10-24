@@ -5,17 +5,6 @@
 #   gem 'sqlite3'
 #
 
-# production:
-#   <<: *default
-#   database: footsal
-#   adapter: mysql
-#   encoding: utf8mb4
-#   charaset: utf8mb4
-#   collation: utf8mb4_general_ci
-#   host: rds-mysql-server.cfltuuicz8jz.ap-northeast-1.rds.amazonaws.com
-#   username: root
-#   password: ny09304869
-
 
 
 default: &default
@@ -36,4 +25,11 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: footsal
+  adapter: mysql2
+  encoding: utf8mb4
+  charaset: utf8mb4
+  collation: utf8mb4_general_ci
+  host: rds-mysql-server.cfltuuicz8jz.ap-northeast-1.rds.amazonaws.com
+  username: root
+  password: ny09304869

@@ -37,11 +37,11 @@ bind "unix://#{Rails.root}/tmp/soclets/puma.sock"
 rails_root = Dir.pwd
 pidfile File.join(rails_root, 'tmp', 'pids', 'puma-pid')
 state_path File.join(rails_root, 'tmp', 'pids', 'puma.state')
-stdput_redirect{
-  File.join(rails_root, 'log', 'puma.log'),
-  File.join(rails_root, 'log', 'puma-error.log'),
-  true
- }
- # 
+# stdput_redirect{
+#   File.join(rails_root, 'log', 'puma.log'),
+#   File.join(rails_root, 'log', 'puma-error.log'),
+#   true
+#  }
+ #
  # デーモン
  # daemonize
