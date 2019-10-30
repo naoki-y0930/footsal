@@ -11,6 +11,9 @@ class ContactMailer < ApplicationMailer
        from: 'foosal@example.com',
        to: ENV['MAIL'],
        subject: "メールのタイトル"
-     )
+       #production
+       #to: "pendonking4869@gmail.com",
+       #subject: "メールのタイトル"
+      )
   end
 end

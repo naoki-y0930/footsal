@@ -20,6 +20,7 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
+
   # config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
   # public（image）常にtrue
   config.public_file_server.enabled = true
@@ -65,7 +66,18 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "footsal_#{Rails.env}"
 
-  config.action_mailer.perform_caching = false
+  config.action_mailer.perform_caching = true
+
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+ address:              'smtp.gmail.com',
+ port:                  587,
+ domain:               'gmail.com',
+ user_name:            'pendonking4869@gmail.com',
+ password:             'uyihsjcypwtrhjvq',
+ authentication:       'plain',
+ enable_starttls_auto:  true
+}
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

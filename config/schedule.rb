@@ -27,9 +27,18 @@
 # set :environment, rails_env
 # set :output, "log/cron.log"
 
-set :environment, "development"
+#set :environment, "development"
+#set :output, { :error => "log/cron_error.log" }
+#set :path, "/vagrant/footsal"
+
+#env :PATH, ENV['PATH']
+#every 2.minutes do
+#rake "check_post:check_delete"
+#end
+
+set :environment, "production"
 set :output, { :error => "log/cron_error.log" }
-set :path, "/vagrant/footsal"
+set :path, "/home/ec2-user/footsal"
 
 env :PATH, ENV['PATH']
 every 2.minutes do
