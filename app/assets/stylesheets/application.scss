@@ -107,6 +107,7 @@
   height: 550px;
   margin: 0 ;
   background: url("/images/footsal9.jpg") no-repeat center center / cover;
+  object-fit: cover;
   position: relative;
 }
 .header-image p{
@@ -147,17 +148,10 @@
   -1px -1px 1px #000,
   0 0 22px #000;
 }
-.fixed1{
-  background: url("/images/footsal11.jpg") no-repeat center center / cover;
-  background-attachment: fixed;
-}
-.fixed2{
-  background: url("/images/footsal7.jpg") no-repeat center center / cover;
-  background-attachment: fixed;
-}
-.fixed3{
-  background: url("/images/footsal10.jpg") no-repeat center center / cover;
-  background-attachment: fixed;
+
+.parallax-window {
+ min-height: 60px;
+ background: transparent;
 }
 
 .flex{
@@ -387,11 +381,11 @@
   height: 50px;
 }
 .posts-icon{
-  width: 171.5px;
+  width: 160px;
   text-align: center;
 }
-.fixed-block{
-  height: 100px;
+.change-post{
+  margin-bottom: 100px;
 }
 
 // postsindexここまで
@@ -534,7 +528,43 @@ nav ul {
   line-height: 50px;
   height: 50px;
 }
+
 .copyright p {
   margin: 0;
 }
 // footerここまで
+
+
+// media query
+@media screen and (max-width: 568px){
+
+  .frame{
+    width: 95%;
+    margin:0 auto;
+  }
+  .smartphone img{
+    width: 290px;
+  }
+  .phone-size img{
+    width: 270px;
+  }
+
+//   .fixed1 {
+//   background: none;
+// }
+//
+// .fixed1::before {
+//   content: "";
+//   display: block;
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   -webkit-transform: translate3d(0, 0, -1px);
+//   transform: translate3d(0, 0, -1px);
+//   width: 100%;
+//   height: 60px;
+//   background: url("/images/footsal11.jpg") center/cover no-repeat;
+//   -webkit-background-size: cover;
+// }
+
+}

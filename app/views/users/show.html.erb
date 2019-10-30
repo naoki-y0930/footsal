@@ -3,7 +3,7 @@
      <div class="container">
       <div class="row">
        <div class="col-lg-4 col-md-6 col-sm-6 center">
-        <div class="margin1"><%= attachment_image_tag @user, :image, :fill, 300, 300, fallback: "no_image.png" %></div>
+        <div class="margin1 smartphone"><%= attachment_image_tag @user, :image, :fill, 300, 300, fallback: "no_image.png" %></div>
          <div class="margin2"><%= link_to '編集する', edit_user_path, class: 'btn btn-success button-width' %></div>
          <div class="margin2"><%= link_to 'pass変更', edit_user_registration_path, class: 'btn btn-primary button-width' %></div>
          <div class="margin2"><%= link_to "退会", user_path, method: :delete, data: { confirm: '退会します。本当によろしいですか?' }, class: "btn btn-danger button-width" %></div>
@@ -41,7 +41,7 @@
            <div class="container">
             <div class="row">
              <div class="col-lg-4 col-md-6 col-sm-6 center">
-              <div class="margin1"><%= attachment_image_tag @user, :image, :fill, 300, 300, fallback: "no_image.png" %></div>
+              <div class="margin1 smartphone"><%= attachment_image_tag @user, :image, :fill, 300, 300, fallback: "no_image.png" %></div>
                <% if @isRoom == true %>
                 <!--すでにroomがあるならそのroomへ、そうでなければroomを新たにcreate-->
                 <div class="margin2 font1"><p><a href="/rooms/<%= @roomId %>">トークルームへ</a></p></div>

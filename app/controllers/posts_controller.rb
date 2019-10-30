@@ -5,10 +5,10 @@ class PostsController < ApplicationController
   def index
      @teamdetails = TeamDetail.all
      @posts = Post.all.reverse_order
-     @plan = Post.where(conditions: "予定を合わせて対戦")
-     @now = Post.where(conditions: "いますぐ試合したい")
-     @pleasant = Post.where(conditions: "わいわい試合したい")
-     @serious = Post.where(conditions: "真剣勝負!")
+     @plan = Post.where(conditions: "予定を合わせて対戦").reverse_order
+     @now = Post.where(conditions: "いますぐ試合したい").reverse_order
+     @pleasant = Post.where(conditions: "わいわい試合したい").reverse_order
+     @serious = Post.where(conditions: "真剣勝負!").reverse_order
      render :index, layout: false
   end
 
