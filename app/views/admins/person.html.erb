@@ -2,7 +2,7 @@
    <div class="container">
     <div class="row">
      <div class="col-lg-4 col-md-6 col-sm-6 center">
-      <div class="margin1"><%= attachment_image_tag @user, :image, :fill, 300, 300, fallback: "no_image.png" %></div>
+      <div class="margin1 smartphone"><%= attachment_image_tag @user, :image, :fill, 300, 300, fallback: "no_image.png" %></div>
       <div class="margin2"><%= link_to "編集", person_edit_path, class: 'btn btn-success various-width' %></div>
       <div class="margin2"><%= link_to "強制退会", user_path, method: :delete, data: { confirm: '本当に退会させますか？データは残りますので復元することも可能です。' }, class: "pull-danger", class: "btn btn-danger btn-xs various-width" %></div>
       <div class="margin2"><%= link_to 'ユーザー一覧へ戻る', admins_people_path, class: 'btn btn-primary various-width' %></div>

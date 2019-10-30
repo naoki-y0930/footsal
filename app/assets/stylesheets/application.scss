@@ -387,11 +387,12 @@
   height: 50px;
 }
 .posts-icon{
-  width: 171.5px;
+  width: 160px;
   text-align: center;
 }
-.fixed-block{
-  height: 100px;
+
+.change-post{
+  margin-bottom: 100px;
 }
 
 // postsindexここまで
@@ -538,3 +539,20 @@ nav ul {
   margin: 0;
 }
 // footerここまで
+
+
+// media query
+@media screen and (max-width: 568px){
+
+  .frame{
+    width: 95%;
+    margin:0 auto;
+  }
+  .smartphone img{
+    width: 290px;
+  }
+  .phone-size img{
+    width: 270px;
+  }
+
+}

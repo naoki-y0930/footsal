@@ -6,7 +6,7 @@
         <div class="contain">
          <% @users.each do |user| %>
           <div class="flex double-frame-use">
-           <div class="item1"><%= attachment_image_tag user, :image, :fill, 300, 300, fallback: "no_image.png" %></div>
+           <div class="item1 phone-size"><%= attachment_image_tag user, :image, :fill, 300, 300, fallback: "no_image.png" %></div>
             <div class="item2 center font1"><%= user.team_name %></div>
            <% if user_signed_in? %>
             <div class="center"><%= link_to '詳細', user_path(user) %></div>

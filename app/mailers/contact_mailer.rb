@@ -7,6 +7,10 @@ class ContactMailer < ApplicationMailer
   #
   def contact_mail(contact)
     @contact = contact
-    mail to: ENV['MAIL'], subject: "メールのタイトル"
+    mail(
+       from: 'foosal@example.com',
+       to: "pendonking4869@gmail.com",
+       subject: "メールのタイトル"
+      )
   end
 end

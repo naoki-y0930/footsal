@@ -1,4 +1,5 @@
 class TeamdetailsController < ApplicationController
+before_action :new_message_badge, if: :user_signed_in?
 
   def new
     @team = TeamDetail.new

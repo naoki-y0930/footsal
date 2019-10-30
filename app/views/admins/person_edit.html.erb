@@ -1,7 +1,8 @@
 <h1 class="center margin1">ユーザー編集</h1>
- <div class="conteiner">
-  <div class="row justify-content-center ">
-   <div class="margin1">
+ <div class="margin1">
+  <div class="container">
+   <div class="row justify-content-center">
+    <div class="col-md-8 col-sm-8">
      <%= form_for @user, :url => { :controller => :admins, :action => :update } do |f| %>
         <%= render 'layouts/error_messages', model: f.object %>
       <h4 class="font4">名前</h4>
@@ -63,3 +64,4 @@
      </div>
     </div>
    </div>
+  </div>
