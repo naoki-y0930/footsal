@@ -15,7 +15,7 @@
 //= require bootstrap-sprockets
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
+
 //= require_tree .
 // 画面を使用するたびに「○分後にログアウト」にリセットされるため、サイト使用中はセッションが切れない
 $(document).ready(function(){

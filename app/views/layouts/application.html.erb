@@ -5,9 +5,9 @@
     <%= favicon_link_tag('favicon.ico') %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> <!-- parallax.min.js -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
@@ -17,12 +17,10 @@
      <div class="user_logged"></div>
      <%= auto_session_timeout_js %>
    <% end %>
-
     <header>
      <!-- navbar-expand-○でグローバルメニュー表示（なければハンバーガメニュー） -->
       <nav class="navbar navbar-expand-lg navbar-expand-md navbar-dark bg-primary">
-        <a href="/home" id="logo" class="navbar-brand"><img src="<%= asset_path "footsal15.png" %>" alt="foosal"></a>
-
+       <a href="/home" id="logo" class="navbar-brand"><img src="<%= asset_path "footsal15.png" %>" alt="foosal"></a>
         <!-- <button>~</button>でハンバーガメニュー作成。data-targetで指定したIDやクラスがハンバーガメニューとなる -->
          <button class="navbar-toggler" type="button" data-toggle="collapse"
           data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,12 +33,12 @@
           <li class="nav-item active"><%= link_to "マイページ", user_path(current_user), class: "nav-link" %></li>
           <li class="nav-item active"><%= link_to "チーム一覧", users_path, class: "nav-link" %></li>
           <li class="nav-item active"><%= link_to "トークルーム", rooms_path, class: "nav-link" %>
-            <% if user_signed_in? %>
+           <% if user_signed_in? %>
             <% if @unreads == 0 %>
            <% else %>
            <!--Applicationhelper.rbに記載 -->
-            <%= new_message_badge %>
-           <% end %>
+             <%= new_message_badge %>
+            <% end %>
            <% end %>
           </li>
           <li class="nav-item active"><%= link_to "掲示板", posts_path, class: "nav-link" %></li>
@@ -84,10 +82,10 @@
        </nav>
       </div>
      <div class="sticky-bottom">
-       <div class="copyright">
-        <p>&copy; 2019 foosal</p>
-       </div>
+      <div class="copyright">
+       <p>&copy; 2019 foosal</p>
       </div>
-     </footer>
-    </body>
-   </html>
+     </div>
+    </footer>
+   </body>
+  </html>

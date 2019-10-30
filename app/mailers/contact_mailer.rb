@@ -9,8 +9,11 @@ class ContactMailer < ApplicationMailer
     @contact = contact
     mail(
        from: 'foosal@example.com',
-       to: "pendonking4869@gmail.com",
+       to: ENV['MAIL'],
        subject: "メールのタイトル"
+       #production
+       #to: "pendonking4869@gmail.com",
+       #subject: "メールのタイトル"
       )
   end
 end

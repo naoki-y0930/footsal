@@ -107,6 +107,7 @@
   height: 550px;
   margin: 0 ;
   background: url("/images/footsal9.jpg") no-repeat center center / cover;
+  object-fit: cover;
   position: relative;
 }
 .header-image p{
@@ -147,17 +148,10 @@
   -1px -1px 1px #000,
   0 0 22px #000;
 }
-.fixed1{
-  background: url("/images/footsal11.jpg") no-repeat center center / cover;
-  background-attachment: fixed;
-}
-.fixed2{
-  background: url("/images/footsal7.jpg") no-repeat center center / cover;
-  background-attachment: fixed;
-}
-.fixed3{
-  background: url("/images/footsal10.jpg") no-repeat center center / cover;
-  background-attachment: fixed;
+
+.parallax-window {
+ min-height: 60px;
+ background: transparent;
 }
 
 .flex{
@@ -535,6 +529,7 @@ nav ul {
   line-height: 50px;
   height: 50px;
 }
+
 .copyright p {
   margin: 0;
 }
