@@ -31,7 +31,7 @@
            <% if @message.present? %>
             <% @messages.each do |m| %>
              <% if m.user == current_user %>
-              <div class="talk-light">
+              <div class="talk-light message-height">
                <div class="room-contain-me">
                 <div class="talk-and-time-me">
                  <div class="room-talk-me"><%= simple_format(m.content) %></div>
@@ -40,7 +40,7 @@
                 </div>
                </div>
               <% else %>
-               <div class="room-contain-you">
+               <div class="room-contain-you message-height">
                 <div class="image-icon">
                  <%= attachment_image_tag m.user, :image, :fill, 63, 63, fallback: "no_image2.png", class: 'radius' %>
                 </div>
@@ -61,8 +61,24 @@
                  <%= f.hidden_field :room_id, value: @room.id %>
                  <%= f.submit '送信', class: 'send-button' %>
                 </div>
+                 <div class="fixed-block"></div>
                <% end %>
+               </div>
               </div>
-             </div>
-            </body>
-           </html>
+             </body>
+            </html>
+          <script type="text/javascript">
+            $(document).ready(function(){
+              var height = 56;
+              // 各メッセージのheightを取得して足していく
+              $(".message-height").each( function() {
+                height += ($(this).height());
+              });
+              // room内画面に繊維した時合計したheight位置から始まる
+              $(window).scrollTop(height);
+              // room内で再読み込みすると合計height位置に戻る
+              $(window).on('beforeunload', function() {
+                $(window).scrollTop(height);
+              });
+            });
+          </script>

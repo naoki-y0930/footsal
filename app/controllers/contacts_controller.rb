@@ -1,4 +1,5 @@
 class ContactsController < ApplicationController
+before_action :new_message_badge, if: :user_signed_in?
 
   def new
     @contact = Contact.new

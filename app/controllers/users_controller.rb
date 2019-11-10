@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   end
 
   def index
-     @users = User.page(params[:page]).per(5).reverse_order
+     @users = User.page(params[:page]).per(8).reverse_order
   end
 
   def show
@@ -69,7 +69,10 @@ class UsersController < ApplicationController
 
   def update
   @user = User.find(params[:id])
-   if @user.update(user_params)
+  require "refile/mini_magick"
+
+  if @user.update(user_params)
+     # @user.update(params.require(:user).permit(:name, :captain_name, :team_name, :tell))
       redirect_to user_path(@user.id)
      else
       flash.now[:alert] = "正しく記入してください。"

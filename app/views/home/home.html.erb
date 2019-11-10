@@ -31,7 +31,7 @@
           <% if @newuser.present? %>
          <% @newuser.each do |new| %>
           <div class="flex">
-           <div class="item1"><%= attachment_image_tag new, :image, :fill, 300, 300, fallback: "no_image.png" %></div>
+           <div class="item1"><%= attachment_image_tag new, :image, :fill, 300, 300, fallback: "no_image.png", auto_orient: true %></div>
            <div class="item2 center font1"><%= new.team_name %></div>
            <div class="item3 center"><%= link_to '詳細', user_path(new) %></div>
           </div>

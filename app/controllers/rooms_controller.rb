@@ -24,11 +24,30 @@ class RoomsController < ApplicationController
    end
 
    def create
+     # @entry2.userが、もし自分が入っているroomの相手ユーザーと同じなら
+     # （@entry2.user_idが@anotherEntriesに存在していたら）
+     # 作成したroom,@entry1,@entry2を削除する
+     @currentEntries = current_user.entries
+     myRoomIds = []
+
+     @currentEntries.each do |entry|
+       myRoomIds << entry.room.id
+     end
+     @anotherEntries = Entry.where(room_id: myRoomIds).where( 'user_id != ?', current_user.id)
+
      @room = Room.create
      @entry1 = Entry.create(room_id: @room.id, user_id: current_user.id)
      @entry2 = Entry.create(params.require(:entry).permit(:user_id, :room_id).merge(room_id: @room.id))
-     redirect_to "/rooms/#{@room.id}"
-   end
+
+     if @anotherEntries.exists?(user_id: @entry2.user_id)
+          @room.destroy
+          @entry1.destroy
+          @entry2.destroy
+          redirect_to "/rooms/" and return
+        else
+          redirect_to "/rooms/#{@room.id}" and return
+      end
+     end
 
    def show
      @room = Room.find(params[:id])
