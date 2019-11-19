@@ -72,4 +72,35 @@
        </div>
      </div>
     </section>
+    <span id="back-top">
+      <a href="#"><i class="fas fa-chevron-up fa-2x back-arrow"></i></a>
+    </span>
+    <script type="text/javascript">
+      // topに戻るボタン
+      $(function() {
+
+        var $backBtn = $('#back-top');
+
+        // 最初はボタンを隠しておく
+        $backBtn.hide();
+
+        $(window).scroll(function() {
+          if ($(this).scrollTop() > 1500) {
+            // スクロールが1500以上なら表示
+            $backBtn.fadeIn();
+          } else {
+            // スクロールが1500未満なら非表示
+            $backBtn.fadeOut();
+          }
+        });
+        $backBtn.on('click', function(){
+          $('body, html').animate({
+            scrollTop: 0
+            // 0.8秒かけてトップへ戻る
+          }, 800);
+          // イベントのデフォルト効果を打ち消す（今回はaタグの効果を打ち消す）
+          return false;
+        });
+      });
+    </script>
    </div>
